@@ -1,0 +1,550 @@
+{
+  "currency_label": "€",
+  "currency_label_m2": "$t(currency_label) pe $t(area_unit)",
+  "area_unit": "m²",
+  "unit_statuses": {
+    "0": "Vândut",
+    "1": "Disponibil",
+    "2": "Rezervat",
+    "3": "Rezervat",
+    "4": "Inaccesibil",
+    "6": "Blocat",
+    "1_tooltip": "Disponibilitate confirmată în sistem"
+  },
+  "error": {
+    "pdf": "Pentru a vizualiza conținutul PDF, vă rugăm să modificați setările de confidențialitate: Accesați Setări -> Safari -> Blocare Ferestre Pop-up și dezactivați-o.",
+    "open_pdf": "Deschide PDF"
+  },
+  "floor_list": {
+    "build": "Clădirea {{build}}",
+    "section": "Secțiunea {{section}}"
+  },
+  "infoBox": {
+    "sold": "Toate apartamentele sunt vândute",
+    "sold_short": "Vândut",
+    "flatSold": "Apartament vândut",
+    "flatClosed": "Vânzările nu sunt deschise",
+    "freeObjects": "Disponibil",
+    "price_m2_from": "Preț pe $t(area_unit):",
+    "from_price": "de la {{currency}} {{text}}",
+    "price_from": "Preț:",
+    "reviewFlat": "Explorează proprietatea",
+    "buildReview": "Vizualizează clădirea",
+    "review": "Revizuire",
+    "finishDate": "Termen de livrare:",
+    "filter_results": "Sunt filtrate {{count}} apartamente",
+    "infrastructure_button_iframe": "Explorează turul",
+    "infrastructure_button_image": "Explorează fotografia",
+    "infrastructure_button_video": "Explorează video",
+    "general": {
+      "button_titles": {
+        "queue": "Explorează Faza",
+        "villa": "Explorează vila",
+        "house": "Explorează casa"
+      }
+    }
+  },
+  "title": {
+    "genplan": "Planul General",
+    "flyby_1_outside": "Clădirea 1",
+    "favourites": "Favorite",
+    "plannings": "Planuri"
+  },
+  "load": {
+    "loading-text": "Se încarcă",
+    "loading-text-wait": "Așteptați puțin..."
+  },
+  "menu": {
+    "menu-title": "Meniu",
+    "nav": {
+      "1": {
+        "nav-title": "Nume",
+        "nav-subtitle": {
+          "1": "Principală",
+          "2": "Despre noi",
+          "3": "Apartamente",
+          "4": "Galerie",
+          "5": "Nume"
+        }
+      },
+      "2": {
+        "nav-title": "Nume",
+        "nav-subtitle": {
+          "1": "Parcare",
+          "2": "Infrastructură",
+          "3": "Documente",
+          "4": "Stadiul construcției",
+          "5": "Știri și promoții",
+          "6": "Contacte"
+        }
+      }
+    }
+  },
+  "ctr": {
+    "nav": {
+      "title": "Meniu 3D",
+      "genplan": "Planul General",
+      "navigation": "Navigare",
+      "tooltip_1": "Clădirea 1",
+      "flyby": "Clădiri",
+      "flyby_1_outside": "Clădirea 1",
+      "flyby_1_inside": "Interiorul Clădirii 1",
+      "flyby_2_outside": "Clădirea 2",
+      "flyby_2_inside": "Interiorul Clădirii 2",
+      "flyby_3_outside": "Clădirea 3",
+      "flyby_3_inside": "Interiorul Clădirii 3",
+      "flyby_4_outside": "Clădirea 4",
+      "flyby_4_inside": "Interiorul Clădirii 4",
+      "flyby_5_outside": "Clădirea 5",
+      "flyby_5_inside": "Interiorul Clădirii 5",
+      "plannings": "Planuri",
+      "floor": "Planul etajului",
+      "floor_plans": "Planuri de etaj",
+      "flat": "Apartament",
+      "functions": "Funcții",
+      "property": "Proprietate",
+      "flat_shot": "Apartamente",
+      "back": "Înapoi",
+      "menu": "Meniu",
+      "callback": "Solicitați apel"
+    },
+    "share": {
+      "link-copied": "Link copiat"
+    },
+    "flybysidechooser": {
+      "outside": "Fațada externă",
+      "inside": "Fațada internă"
+    },
+    "menu": {
+      "compass": {
+        "south": "S",
+        "west": "V",
+        "east": "E",
+        "north": "N"
+      },
+      "btn": {
+        "infrastructure": "Infrastructură",
+        "filter": "Filtru",
+        "chooseOfApartment": "Apartament",
+        "chooseOfFloor": "Etaj",
+        "repeatHelp": "?"
+      },
+      "hightlightInfrastructure": "Suprapunere",
+      "build_progress": "Stadiul construcției",
+      "on_the_map": "Locație pe hartă",
+      "on_the_build": "Planuri de apartamente",
+      "callbackFormCall": "Contactați managerul"
+    }
+  },
+  "Helper": {
+    "slide-0--title": "Țineți și rotiți",
+    "slide-1--title": "Filtru",
+    "slide-2--title": "Etaje sau apartamente",
+    "slide-3--title": "Utilizați navigarea",
+    "title1": "Navigare",
+    "description1": "Puteți roti modelul 3D",
+    "title2": "Instrumente",
+    "description2": "Instrumente pentru interacțiunea cu modelul 3D",
+    "title3": "Filtru",
+    "description3": "Puteți filtra după parametrii dvs.",
+    "title4": "Comparare",
+    "description5": "Puteți adăuga planuri pentru a compara",
+    "close": "Omite antrenamentul",
+    "next": "Următorul",
+    "gotIt": "Am înțeles!"
+  },
+  "Filter": {
+    "title": "Selecție după parametri",
+    "data_changed": "Parametrii s-au schimbat",
+    "list": {
+      "type": "Tip",
+      "rooms": "Dormitoare",
+      "area": "Suprafață",
+      "area_unit": "$t(area_unit)",
+      "price": "Preț",
+      "status": "Statut",
+      "floor": "Etaj",
+      "favourite--add": "Selectează"
+    },
+    "range": {
+      "floor": "Etaj",
+      "area": "Dimensiune",
+      "area_unit": "$t(area_unit)"
+    },
+    "checkboxes": {
+      "rooms": "Dormitoare",
+      "build": "Clădire",
+      "type": "Tip"
+    },
+    "reset": "Șterge",
+    "apply": "Aplică",
+    "hide": "Filtre ascunse",
+    "show": "Afișează filtrele",
+    "found": "Găsite",
+    "from": "cu",
+    "to": "până la",
+    "not-marked-message": "Această proprietate nu este marcată",
+    "openFilter": "Deschide filtrul",
+    "enterUnitNumber": "Introduceți numărul unității",
+    "Search by number": "Căutare după număr"
+  },
+  "Flat": {
+    "name": "Unitate",
+    "explication": "Explicație",
+    "gallery": "Galerie",
+    "virtual_tour": "TUR VIRTUAL AL CAMEREI",
+    "floor_plan": "Plan de etaj",
+    "other_flats_title": "Acest apartament, dar la alte etaje",
+    "doc_title": "Documentație",
+    "financial_terms_title": "Termeni de finanțare",
+    "construction_title": "Stadiul construcției",
+    "video": "Prezentare video",
+    "discount": "Reducere",
+    "floor": "etaj",
+    "bathroom": "baie",
+    "bedrooms": "dormitoare",
+    "garage": "garaj",
+    "pools": "piscine",
+    "from_window_view": "Vederi 360",
+    "scroll": "Derulează",
+    "explication_data": {
+      "floor_1": "Informații",
+      "floor_2": "Etajul 2",
+      "floor_3": "Etajul 3",
+      "floor_4": "Etajul 4",
+      "floor_5": "Etajul 5"
+    },
+    "floor_planning": "PLANIFICAREA PROPRIETĂȚII",
+    "change_floor": "Schimbă etajul:",
+    "same_apartment_type": "ACELAȘI TIP DE APARTAMENT",
+    "buttons": {
+      "with": "3D",
+      "without": "2D",
+      "gallery_btn": "Galerie",
+      "showIn3d": "În 3D",
+      "view": "Vizualizare",
+      "windowView": "De la fereastră",
+      "compare": "Compară",
+      "addedToCompare": "Adăugat la comparare",
+      "addedToCompare_mob": "În comparație",
+      "pdf": "PDF",
+      "3dTour": "Tur 3D",
+      "callback--1": "Contactați managerul",
+      "callback--2": "Rezervați un apartament",
+      "planning2d": "Plan 2D",
+      "planning3d": "Plan 3D",
+      "furnished": "Mobilat",
+      "video": "Vizualizează raportul video"
+    },
+    "timer": {
+      "timer-text": "Mai este timp pentru a rezerva la acest preț"
+    },
+    "information": {
+      "title": "Informații",
+      "sale": "Statut",
+      "build": "Casă",
+      "number": "Număr",
+      "area": "Suprafață",
+      "allArea": "Suprafață totală",
+      "life_area": "Suprafață de locuit",
+      "area_unit": "$t(area_unit)",
+      "rooms": "Dormitoare",
+      "rooms_R": "R",
+      "floor": "Etaj",
+      "price": "Preț",
+      "priceText": " $t(currency_label)",
+      "type": "Tip",
+      "section": "Secțiune",
+      "price_m2": "Preț $t(area_unit)",
+      "per": "pe",
+      "priceHistory": "Dinamica prețurilor",
+      "floor_n_desktop": "Numărul etajului",
+      "floor_n_mobile": "Etajul №",
+      "viewPlanning": "Vizualizează Planul"
+    },
+    "goToFloor": "Planul etajului",
+    "goToFlat": "Explorează proprietatea",
+    "hero": {
+      "title": "ATHOS",
+      "subtitle": "Vilă",
+      "description": "NOUL NOSTRU PROIECT SE AFLĂ ÎN ZONA DE LUX SOUTH MIAMI, ÎN CARTIERUL SCENIC HIGH PINES, CHIAR ÎN INIMA LUI CORAL GABLES. ACEASTĂ ZONĂ ESTE CUNOSCUTĂ PENTRU ȘCOLILE SALE DE TOP ȘI CALITATEA EXCEPȚIONALĂ A VIEȚII. "
+    },
+    "faq": {
+      "faqTitle": "Întrebări frecvente",
+      "faq_question": {
+        "1": "Care este prețul apartamentului?",
+        "2": "Care este suprafața apartamentului?",
+        "3": "Care este planul apartamentului?",
+        "4": "Care este etajul apartamentului?",
+        "5": "Care este statutul apartamentului?",
+        "6": "Care este tipul apartamentului?",
+        "7": "Care este secțiunea apartamentului?",
+        "8": "Care este prețul pe metru pătrat al apartamentului?",
+        "9": "Care este suprafața totală a apartamentului?",
+        "10": "Care este suprafața de locuit a apartamentului?",
+        "11": "Care este numărul de camere din apartament?",
+        "12": "Care este istoricul prețurilor apartamentului?",
+        "13": "Care este numărul etajului apartamentului?"
+      },
+      "faq_answer": {
+        "1": "Prețul apartamentului este",
+        "2": "Suprafața apartamentului este",
+        "3": "Planul apartamentului este",
+        "4": "Etajul apartamentului este",
+        "5": "Statutul apartamentului este",
+        "6": "Tipul apartamentului este",
+        "7": "Secțiunea apartamentului este",
+        "8": "Prețul pe metru pătrat al apartamentului este",
+        "9": "Suprafața totală a apartamentului este",
+        "10": "Suprafața de locuit a apartamentului este",
+        "11": "Numărul de camere din apartament este",
+        "12": "Istoricul prețurilor apartamentului este",
+        "13": "Numărul etajului apartamentului este"
+      }
+    },
+    "exterior": {
+      "exteriorTitle": "EXTERIORUL VILEI",
+      "exteriorItemTitle": {
+        "1": "VEDERI LA RĂSĂRIT: VIAȚA PE COASTĂ REDEFINITĂ:",
+        "2": "REFUGII EXCLUSIVE PE COASTĂ: SANCTUARUL TĂU TE AȘTEAPTĂ",
+        "3": "ELEGANȚĂ PE MALUL OCEANULUI: SUITE MATRIMONIALE CU VEDERI"
+      },
+      "exteriorItemDescription": {
+        "1": "Treziți-vă cu priveliști uimitoare ale răsăritului de soare de pe terasa dumneavoastră privată. Fiecare vilă oferă o panoramă de neegalat a mării, asigurând că fiecare dimineață este spectaculoasă.",
+        "2": "Găsiți-vă sanctuarul în refugiile noastre exclusive pe coastă. Villas Dumas oferă un stil de viață unic, cu terase panoramice, interioare șic și spații de locuit interioare-exterioare fluide.",
+        "3": "Treziți-vă cu oceanul la ușa dumneavoastră. Suitele noastre matrimoniale oferă vederi uimitoare la mare, îmbinând luxul cu frumusețea naturii pentru o experiență de locuit de neegalat."
+      },
+      "exteriorContactButton": "Contactați managerul"
+    },
+    "contactUs": {
+      "general_title": "CONTACTE",
+      "phone": "Telefon de contact:",
+      "email": "E-mailul nostru:",
+      "social": "Rețele sociale:",
+      "departmentTitle": {
+        "1": "Departamentul de Vânzări",
+        "2": "Construcții:"
+      },
+      "departmentAddress": {
+        "1": "Vinnytsia, Strada Magistratska, 82",
+        "2": "Vinnytsia, Strada Keletska"
+      },
+      "departmentAddressLink": "DESCHIDE PE GOOGLE MAPS",
+      "introTitle": "ȚI-AI GĂSIT VIITOAREA CASĂ?",
+      "introDescription": "Completați formularul pentru a obține mai multe informații despre proprietate și detaliile de achiziție.",
+      "contactManagerName": "Alex Smith",
+      "contactManagerPosition": "Manager de Vânzări",
+      "ourAdvantages": "TE VIZUALIZEZI <br/>ÎNTR-UNA DINTRE VILELE NOASTRE?",
+      "contactAdvantagesItem": {
+        "1": "Consultare Personalizată",
+        "2": "Opțiuni de Personalizare",
+        "3": "Soluții de Finanțare",
+        "4": "Consultare Design Interior",
+        "5": "Potențial de Închiriere"
+      },
+      "contactButton": "CONTACTAȚI-NE AZI"
+    },
+    "virtual_tour_open": "Explorează turul",
+    "virtual_tour_close": "Pauză"
+  },
+  "Floor": {
+    "title-1": "",
+    "changeFloor--": "Schimbă etajul:",
+    "title-2": "etaj",
+    "number_rooms": "Număr de Dormitoare",
+    "apps_from": "Apartamente de la",
+    "information": {
+      "title": "Informații",
+      "build": "Clădire",
+      "floor": "Etaj",
+      "section": "Secțiune",
+      "price_m2_from": "De la $t(currency_label) pe $t(area_unit)",
+      "all-flats": "Total apartamente",
+      "free-flats": "Disponibil",
+      "free-flats--": "Disponibil:",
+      "from": "De la",
+      "per_m2": "pe $t(area_unit)",
+      "reviewFloor": "Explorează planul etajului"
+    },
+    "filter": {
+      "1": "1 dormitor",
+      "2": "2 dormitoare",
+      "3": "3 dormitoare",
+      "4": "4 dormitoare",
+      "5": "5 dormitoare",
+      "all": "Toate camerele",
+      "title-mob": "Dormitoare"
+    },
+    "floor-list": "etaje",
+    "goToFloor": "Mergi la etaj"
+  },
+  "Plannings": {
+    "found": "Găsite",
+    "found--from": "din",
+    "found--with": "cu",
+    "found-flats": "apartamente",
+    "notFound": "Dar uitați-vă la aceste apartamente",
+    "toggle-title": "Planuri",
+    "toggle-title-btn-cards": "Carduri",
+    "toggle-title-btn-list": "Listă",
+    "toggle-title222": "titlu"
+  },
+  "favourite--title": "Compară",
+  "favourite--added": "Compară (adăugate <span class=\"js-s3d__fv-count\"></span> apartamente)",
+  "favourite--added-mobile": "Compară (adăugate <span class=\"js-s3d__fv-count\"></span>)",
+  "favourite--apartments": "apartamente",
+  "favourite--add": "Selectează",
+  "favourite--empty-title": "Nu a fost găsit nimic de comparat",
+  "favourite--empty-text": "Alegeți planuri și adăugați-le la lista de comparație",
+  "favourite--empty-button": "Vizualizează planurile",
+  "favourite--show-differences": "Afișează doar diferențele",
+  "card--link": "Citește mai mult",
+  "card--add_to_compare": "Adaugă la comparare",
+  "PopupFlyby": {
+    "title": "Apartament ",
+    "description": "Planul este într-o altă clădire. Pentru a-l vizualiza pe un model 3D, trebuie să schimbați blocul.",
+    "btn": "Schimbă unghiul"
+  },
+  "Error-popup": {
+    "title": "A apărut o eroare",
+    "translate-info": "Veți fi redirecționat către planul general 3D prin",
+    "link": "La principalul",
+    "messages": {
+      "not-find-data": "datele așteptate nu au fost primite",
+      "not-all-required-data-received": "nu au fost primite toate datele necesare",
+      "invalid-url": "date incorecte în url",
+      "failed-request": "nu s-a reușit încărcarea datelor",
+      "network-error": "eroare de rețea",
+      "application-error": "eroare de aplicație",
+      "unknown-error": "Eroare necunoscută"
+    }
+  },
+  "Send-error-popup": {
+    "success": "datele de eroare au fost trimise cu succes specialiștilor de suport tehnic",
+    "failed": "datele de eroare nu au fost salvate, vă rugăm să notificați suportul tehnic"
+  },
+  "slider_popup": {
+    "227": "Tip MasterFly",
+    "228": "Tip 5BR AB",
+    "229": "Tip 4BR AB",
+    "230": "Tip 4BR AB",
+    "231": "Tip 4BR KS",
+    "232": "Tip 4BR KS",
+    "233": "Tip 4BR SJ",
+    "234": "Tip 4BR SJ",
+    "235": "Tip 5BR JM",
+    "236": "Tip 5BR JM",
+    "239": "Tip 5BR KS",
+    "240": "Tip 5BR KS",
+    "241": "Tip 5BR SJ",
+    "242": "Tip 5BR SJ",
+    "default": "Vilă"
+  },
+  "builds": {
+    "1": "A",
+    "2": "B",
+    "3": "C",
+    "4": "D",
+    "5": "E"
+  },
+  "rooms": {
+    "1": "1 dormitor",
+    "2": "2 dormitoare",
+    "3": "3 dormitoare",
+    "4": "4 dormitoare",
+    "5": "5 dormitoare"
+  },
+  "rooms-abbreviation": {
+    "1": "1 DR",
+    "2": "2 DR",
+    "3": "3 DR",
+    "4": "4 DR",
+    "5": "5 DR"
+  },
+  "sales": {
+    "0": "vândut",
+    "1": "disponibil",
+    "2": "rezervă",
+    "3": "indisponibil"
+  },
+  "pins": {
+    "park_trc": "Magazin",
+    "video": "Parcare oaspeți",
+    "zone": "Parcare oaspeți",
+    "walking_zone": "Zonă de plimbare",
+    "shop_1": "Magazin alimentar",
+    "playground_playground1": "Loc de joacă",
+    "shop_coffee": "Cafenea",
+    "parking_underground": "Parcare subterană",
+    "commercial_zone": "Spații comerciale",
+    "street_zamarstynivska": "str. Zamarstynivska",
+    "street_shidna": "str. Shidna",
+    "street_kvitova": "str. Kvitova",
+    "tennis_court_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, vestibulum ligula at, malesuada magna. Nulla nec purus feugiat, vestibulum ligula at, malesuada magna."
+  },
+  "loader": {
+    "load": "Se încarcă previzualizarea",
+    "wait_a_little": "Așteptați puțin...",
+    "rotate_warning": "Vă rugăm să țineți telefonul în poziție verticală."
+  },
+  "currencies": {
+    "USD": "$",
+    "UAH": "₴",
+    "EUR": "€"
+  },
+  "Dropdown": {
+    "title": "Navigare"
+  },
+  "tutorial": {
+    "step_nav": "Navigare",
+    "step_nav_description": "Puteți roti modelul 3D",
+    "step_interact": "Instrumente",
+    "step_interact_description": "Instrumente pentru interacțiunea cu modelul 3D",
+    "ster_filter": "Filtru",
+    "ster_filter_description": "Puteți filtra după parametrii dvs.",
+    "step_compare": "Comparare",
+    "step_compare_description": "Puteți adăuga planuri pentru a compara",
+    "step_share": "Distribuie",
+    "step_share_description": "Puteți copia linkul către model",
+    "step_fullscreen": "Mod ecran complet",
+    "step_fullscreen_description": "Vă puteți bucura de experiența ecran complet folosind acest mod"
+  },
+  "monthes": {
+    "January": "Ianuarie",
+    "February": "Februarie",
+    "March": "Martie",
+    "April": "Aprilie",
+    "May": "Mai",
+    "June": "Iunie",
+    "July": "Iulie",
+    "August": "August",
+    "September": "Septembrie",
+    "October": "Octombrie",
+    "November": "Noiembrie",
+    "December": "Decembrie"
+  },
+  "from": "de la",
+  "touchModePopup": {
+    "title": "A fost detectat un ecran tactil pe dispozitivul dvs. Vă rugăm să alegeți modul de interacțiune cu modulul:",
+    "mouse": "Mouse",
+    "touch": "Ecran tactil",
+    "changeMode": "Schimbă modul la: {{mode}}"
+  },
+  "pdf_error": "Ceva nu a mers bine...",
+  "pdf_download": "Descarcă",
+  "pdf_ready": "PDF-ul dvs. este gata",
+  "pdf_preparing": "Se pregătește...",
+  "SuccessFormPopup": {
+    "title": "DA, CEREREA DUMNEAVOASTRĂ A FOST PRIMITĂ! ",
+    "button": "AM ÎNȚELES",
+    "text": "Am început deja să pregătim tot ce este necesar pentru a face călătoria dumneavoastră către un spațiu nou lină și interesant."
+  },
+  "infobox": {
+    "available": "Disponibil"
+  },
+  "audioGuide": {
+    "play": "Redă",
+    "repeat": "Repetă",
+    "turn_off": "Oprește"
+  }
+}
