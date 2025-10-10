@@ -105,7 +105,7 @@ function Flat(
     <div class="s3d-villa__container">
       ${s3dFlatFloor(i18n, flat, isChecked, flybyLists, labelsToShowInInfoBlock)}
       ${s3dFloorPlan(i18n, flat, floorList)}
-      ${contactFormHtml1}
+      
       ${flat['gallery'] ? VillaGalleryScreen(flat['gallery'], i18n) : ''}
       ${
         flat['view_from_window_link']
@@ -154,7 +154,7 @@ function Flat(
           globalPhoneNumber,
           project_google_map_location,
         )}
-        ${contactFormHtml2}
+        
       </div>
       
 

@@ -5,7 +5,7 @@
     "imageUrl": "images/flyby/masterplan/",
     "sd_imageUrl": "images/flyby/masterplan/",
     "enableParalax": false,
-    "enableClouds": true,
+    "enableClouds": false,
     "image_format": "jpg",
     "defaultTheme": "light",
     "class": "js-s3d__wrapper",
@@ -18,7 +18,12 @@
     "verticalAlign": "center",
     "horizontalAlign_faq": "left || center || right",
     "horizontalAlign": "center",
-    "video_keyframes": {},
+    "video_keyframes": {
+      
+      "1": "/assets/s3d/images/v3_2-1.mp4"
+      
+    
+    },
     "controlPoint": [
       1,
       40,
@@ -68,7 +73,7 @@
     },
     "2": {
       "outside": {
-        "id": "flyby_1_outside",
+        "id": "flyby_2_outside",
         "generalWrapId": "#js-s3d__wrapper",
         "imageUrl": "images/flyby/2/outside/",
         "sd_imageUrl": "images/flyby/2/outside/",
@@ -95,7 +100,7 @@
     },
     "3": {
       "outside": {
-        "id": "flyby_1_outside",
+        "id": "flyby_3_outside",
         "generalWrapId": "#js-s3d__wrapper",
         "imageUrl": "images/flyby/3/outside/",
         "sd_imageUrl": "images/flyby/3/outside/",
@@ -149,7 +154,7 @@
   "flat": {
     "id": "flat",
     "viewType_faq": "viewType може бути двох видів: flat або villa",
-    "viewType": "flat",
+    "viewType": "villa",
     "generalWrapId": ".js-s3d__slideModule",
     "labelsToShowInInfoBlock": [
       {
@@ -249,6 +254,20 @@
         "title_prefix_i18n": false,
         "name": "floor",
         "type": "range"
+      },
+      {
+        "title_i18n": "Filter.laist.price",
+        "title_postfix_i18n": false,
+        "title_prefix_i18n": false,
+        "name": "price",
+        "type": "range"
+      },
+      {
+        "title_i18n": "Flat.information.price_m2",
+        "title_postfix_i18n": false,
+        "title_prefix_i18n": false,
+        "name": "price_m2",
+        "type": "range"
       }
     ],
     "checkboxes": [
@@ -258,22 +277,6 @@
         "needTranslation": false,
         "translationNS": "",
         "paramaterByWhatWillBeFilter": "rooms"
-      },
-      {
-        "title": "Filter.list.type",
-        "type": "checkbox",
-        "viewType": "checkbox_with_label",
-        "needTranslation": false,
-        "translationNS": "",
-        "wide": true,
-        "ignoreParams": {
-          "build": [
-            2,
-            4
-          ]
-        },
-        "id": "type",
-        "paramaterByWhatWillBeFilter": "_type"
       }
     ]
   },
@@ -358,8 +361,9 @@
   },
   "form": {
     "prefered_countries": [
-      "ua",
-      "us"
+      "md",
+      "ro", 
+      "ru"
     ]
   },
   "flyby_finish_dates": {
@@ -378,7 +382,7 @@
       "5"
     ]
   },
-  "project_google_map_location": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d325519.57556806813!2d30.203056370248245!3d50.401569787880334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf4ee15a4505%3A0x764931d2170146fe!2z0JrQuNGX0LIsIDAyMDAw!5e0!3m2!1suk!2sua!4v1714654468086!5m2!1suk!2sua",
+  "project_google_map_location": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6447.122027859399!2d28.8896624!3d47.0685305!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDfCsDA0JzA4LjIiTiAyOMKwNTMnMjcuMSJF!5e1!3m2!1suk!2sua!4v1760107503436!5m2!1suk!2sua",
   "infoBoxes": {
     "general_flyby_button_titles": {
       "faq": "Можливі підписи для кнопок у інфобоксі обльоту : queue ,villa, house",
@@ -475,7 +479,7 @@
   ],
   "SLIDER_MOBILE_FINGER_SWIPE": true,
   "audioAssistant": {
-    "needToInitialize": true,
+    "needToInitialize": false,
     "files": {
       "genplan_1": "/wp-content/themes/3d/static/ElevenLabs_Text_to_Speech_audio.mp3",
       "plannings": "/wp-content/themes/3d/static/plannings.mp3"

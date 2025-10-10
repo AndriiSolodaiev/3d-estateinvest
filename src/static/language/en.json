@@ -546,5 +546,6 @@
     "play": "Play",
     "repeat": "Repeat",
     "turn_off": "Turn off"
-  }
+  },
+  "title-popup": "Form"
 }

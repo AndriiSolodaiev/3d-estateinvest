@@ -105,7 +105,7 @@ export default class SexyInput {
     if (this.typeInput === 'phone') {
       /* eslint-disable */
       input.setAttribute('inputmode', 'tel');
-      const preferredCountries = get(self, 'globalConfig.prefered_countries', ['ua']);
+      const preferredCountries = get(self, 'globalConfig.prefered_countries', ['md, ro, ru']);
       input.intTelIput = intlTelInput(input, {
         preferredCountries: preferredCountries,
         initialCountry: preferredCountries[0],

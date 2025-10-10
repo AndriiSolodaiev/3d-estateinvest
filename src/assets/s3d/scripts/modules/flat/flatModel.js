@@ -99,7 +99,7 @@ class FlatModel extends EventEmitter {
       const type = state.type === '2d' ? 'without' : 'with';
       const image = get(
         this.getFlat(this.activeFlat),
-        `flat_levels_photo[${state.floor}][${type}]`,
+        `img_big`,
         '',
       );
       this.emit('updateExplicationImage', image);

@@ -249,7 +249,7 @@
       "life_area": "Suprafață de locuit",
       "area_unit": "$t(area_unit)",
       "rooms": "Dormitoare",
-      "rooms_R": "R",
+      "rooms_R": "С",
       "floor": "Etaj",
       "price": "Preț",
       "priceText": " $t(currency_label)",
@@ -546,5 +546,7 @@
     "play": "Redă",
     "repeat": "Repetă",
     "turn_off": "Oprește"
-  }
+  },
+  "subtitle": "Managerii noștri te vor contacta în cel mai scurt timp",
+  "title-popup": "Lasă o cerere"
 }
