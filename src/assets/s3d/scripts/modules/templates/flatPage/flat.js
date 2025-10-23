@@ -72,10 +72,8 @@ function Flat(
   faq_questions = [],
   card_bottom_labels = [],
 ) {
-  const contactFormHtml1 = renderVillaContact(i18n, managerInfo, contactAdvantagesList);
   const contactFormHtml2 = renderVillaContact(i18n, managerInfo, contactAdvantagesList);
 
-  const contactFormContainerId1 = extractContainerId(contactFormHtml1);
   const contactFormContainerId2 = extractContainerId(contactFormHtml2);
 
   const isChecked = favouritesIds$.value.includes(flat.id);
@@ -124,25 +122,31 @@ function Flat(
           : ''
       }
       ${flat['3d_tour'] ? VirtualTour(i18n, flat) : ''}
-      ${
-        flat['video']
-          ? `
-        <div class="s3d-villa__video-screen">
-          <div class="s3d-villa__floor__title-wrap">
-            <div class="s3d-villa__floor__title-wrap__line"></div>
-            <span class="s3d-villa__floor__title">${i18n.t('Flat.video')}</span>
-            <div class="s3d-villa__floor__title-wrap__line"></div>
-          </div>
-          <div class="s3d-villa__video-screen-iframe-wrap">
-            <video class="" controls src="${flat['video']}" loading="lazy">
-            </video>
-          </div>
+     
+      <div class="s3d-villa__video-screen">
+        <div class="s3d-villa__floor__title-wrap">
+          <div class="s3d-villa__floor__title-wrap__line"></div>
+          <span class="s3d-villa__floor__title">${i18n.t('Flat.video')}</span>
+          <div class="s3d-villa__floor__title-wrap__line"></div>
         </div>
-      `
-          : ''
-      }
-      ${s3dApartmentsList(i18n, flat, favouritesIds$, showPrices, otherTypeFlats, card_bottom_labels)}
-      ${renderFaqList(i18n, faq_questions, flat)} 
+        <div class="s3d-villa__video-screen-iframe-wrap">
+          <video controls loading="lazy" playsinline>
+            <source src="/wp-content/themes/3d/assets/s3d/images/estateinvest-video-mobile.mp4" media="(max-width: 648px)" type="video/mp4">
+            <source src="/wp-content/themes/3d/assets/s3d/images/estateinvest-video-desktop.mp4" media="(min-width: 649px)" type="video/mp4">
+            Ваш браузер не підтримує відео.
+          </video>
+          </video>
+        </div>
+      </div>
+     
+      ${s3dApartmentsList(
+        i18n,
+        flat,
+        favouritesIds$,
+        showPrices,
+        otherTypeFlats,
+        card_bottom_labels,
+      )}
       ${VillaFinancialTermsScreen(i18n, financialTermsData)}
       ${FlatDocumentationScreen(i18n, projectDocs)}
       ${FlatConstructionProgressScreen(i18n, constructionProgressDataList)}
@@ -154,7 +158,8 @@ function Flat(
           globalPhoneNumber,
           project_google_map_location,
         )}
-        
+       
+        ${contactFormHtml2}
       </div>
       
 
@@ -173,7 +178,7 @@ function Flat(
     renderFlatFlyby(svgFlybyLink, flat.id, flat, getFlat);
   }
 
-  initializeContactForms(contactFormContainerId1, contactFormContainerId2, i18n);
+  initializeContactForms(contactFormContainerId2, i18n);
 
   return flatHtml;
 }
@@ -206,11 +211,8 @@ export function FlatExplicationPropertyRow(title, value, i18n) {
  * @param {string|null} id2 - The ID of the second contact form container.
  */
 
-function initializeContactForms(id1, id2, i18n) {
+function initializeContactForms(id2, i18n) {
   setTimeout(() => {
-    if (id1) {
-      initializeVillaContact(id1, i18n);
-    }
     if (id2) {
       initializeVillaContact(id2, i18n);
     }

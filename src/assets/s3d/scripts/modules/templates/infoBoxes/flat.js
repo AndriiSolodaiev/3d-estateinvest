@@ -1,4 +1,8 @@
-import { isDesktop, isNotDesktopTouchMode, numberWithCommas } from '../../../../../s3d2/scripts/helpers/helpers_s3d2';
+import {
+  isDesktop,
+  isNotDesktopTouchMode,
+  numberWithCommas,
+} from '../../../../../s3d2/scripts/helpers/helpers_s3d2';
 import ButtonWithoutIcon from '../../../../../s3d2/scripts/templates/common/ButtonWithoutIcon';
 import s3d2spriteIcon from '../../../../../s3d2/scripts/templates/spriteIcon';
 import $closeBtn from './$closeBtn';
@@ -25,34 +29,48 @@ function Flat(i18n, data) {
   const currency = i18n.t(`currency_label`);
   const card_bottom_labels = data.card_bottom_labels || [];
 
-  const $priceBlock = show_prices ? `
+  const $priceBlock = show_prices
+    ? `
     <div class="s3d-infoBox__flat__alert-title">
-      ${currency === '$' ? 
-        `${i18n.t(`currency_label`, '')} ${numberWithCommas(price_m2)} ${i18n.t(`Flat.information.per`, '')} ${i18n.t(`area_unit`, '')}` : 
-        `${numberWithCommas(price_m2)} ${i18n.t(`currency_label`, '')} ${i18n.t(`Flat.information.per`, '')} ${i18n.t(`area_unit`, '')}`
+      ${
+        currency === '$'
+          ? `${i18n.t(`currency_label`, '')} ${numberWithCommas(price_m2)} ${i18n.t(
+              `Flat.information.per`,
+              '',
+            )} ${i18n.t(`area_unit`, '')}`
+          : `${numberWithCommas(price_m2)} ${i18n.t(`currency_label`, '')} ${i18n.t(
+              `Flat.information.per`,
+              '',
+            )} ${i18n.t(`area_unit`, '')}`
       }
     </div>
     <div class="text-style-3-d-fonts-1920-h-1 s3d-infoBox__title s3d-infoBox__title-no-bottom-margin">
-      ${currency === '$' ? `${i18n.t(`currency_label`, '')} ${numberWithCommas(price)} ` : `${numberWithCommas(price)} ${i18n.t(`currency_label`, '')}`}
-    </div>
-  `: 
-  ``;
-
-  const $bottomLabels = card_bottom_labels.map(labelObj => {
-    if (!show_prices && labelObj.key == 'price' || labelObj.key == 'price_m2') return '';
-    if (!labelObj || !labelObj.label || !labelObj.key || data[labelObj.key] === undefined) {
-      if (data[labelObj.key] === undefined) {
-        console.warn(`[WARN] Card: flat object has no key '${labelObj.key}'`);
+      ${
+        currency === '$'
+          ? `${i18n.t(`currency_label`, '')} ${numberWithCommas(price)} `
+          : `${numberWithCommas(price)} ${i18n.t(`currency_label`, '')}`
       }
-      return '';
-    }
+    </div>
+  `
+    : ``;
 
-    return `
+  const $bottomLabels = card_bottom_labels
+    .map(labelObj => {
+      if ((!show_prices && labelObj.key == 'price') || labelObj.key == 'price_m2') return '';
+      if (!labelObj || !labelObj.label || !labelObj.key || data[labelObj.key] === undefined) {
+        if (data[labelObj.key] === undefined) {
+          console.warn(`[WARN] Card: flat object has no key '${labelObj.key}'`);
+        }
+        return '';
+      }
+
+      return `
       <div class="s3d-card__info-label">
         ${i18n.t(labelObj.label)}: ${data[labelObj.key]}
       </div>
     `;
-  }).join('');
+    })
+    .join('');
 
   return `
     <div class="s3d-infoBox__flat">
@@ -66,17 +84,21 @@ function Flat(i18n, data) {
             ${i18n.t(`sales.${sale}`)}
             ${s3d2spriteIcon('Info', 's3d-infoBox__flat__alert__status-icon')}
           </div>
-          ${project_deadline ? `
+          ${
+            project_deadline
+              ? `
             <div class="s3d-infoBox__flat__alert__badge">
               ${project_deadline}
               ${s3d2spriteIcon('Construction', 's3d-card__badge-icon')}
             </div>
-            ` : ''}
+            `
+              : ''
+          }
         </div>
         ${isDesktop() ? '' : $closeBtn()}
       </div>
       <div class="s3d-infoBox__flat__alert__middle">
-        <div>${type}</div>
+        <div>${rooms}  ${i18n.t('Flat.information.rooms')}</div>
         <div class="decorative-slash">/</div>
         <div>${area} ${i18n.t('Flat.information.area_unit')}</div>
       </div>
@@ -97,12 +119,24 @@ function Flat(i18n, data) {
           </div>
           <div class="s3d-infoBox__flat__block">
             <div class="s3d-infoBox__flat__text">${i18n.t('Flat.information.price_m2')}</div>
-            <div class="s3d-infoBox__flat__textBold">${numberWithCommas(price_m2)} ${i18n.t(`currency_label`, '')}</div>
+            <div class="s3d-infoBox__flat__textBold">${numberWithCommas(price_m2)} ${i18n.t(
+    `currency_label`,
+    '',
+  )}</div>
           </div>-->
-          ${isDesktop() && isNotDesktopTouchMode() ? '' : ButtonWithoutIcon('', `data-s3d-event="transform" data-type="flat" data-id="${id}"`, i18n.t('infoBox.reviewFlat'),'secondary')}
+          ${
+            isDesktop() && isNotDesktopTouchMode()
+              ? ''
+              : ButtonWithoutIcon(
+                  '',
+                  `data-s3d-event="transform" data-type="flat" data-id="${id}"`,
+                  i18n.t('infoBox.reviewFlat'),
+                  'secondary',
+                )
+          }
         </div>
       </div>
     </div>`;
-};
+}
 
 export default Flat;

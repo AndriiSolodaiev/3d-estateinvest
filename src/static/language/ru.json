@@ -47,6 +47,11 @@
   "title": {
     "genplan": "Генплан",
     "flyby_1_outside": "Дом 1",
+    "flyby_1_inside": "Внутри Дома 1",
+    "flyby_2_outside": "Дом 2",
+    "flyby_2_inside": "Внутри Дома 2",
+    "flyby_3_outside": "Дом 3",
+    "flyby_3_inside": "Внутри Дома 3",
     "favourites": "Избранное",
     "plannings": "Планировки"
   },
@@ -86,6 +91,9 @@
       "genplan": "Генплан",
       "navigation": "Навигация",
       "tooltip_1": "Дом 1",
+      "tooltip_2": "Дом 2",
+      "tooltip_3": "Дом 3",
+      "tooltip_4": "Дом 4",
       "flyby": "Дома",
       "flyby_1_outside": "Дом 1",
       "flyby_1_inside": "Дом 1 внутри",

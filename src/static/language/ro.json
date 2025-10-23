@@ -47,6 +47,11 @@
   "title": {
     "genplan": "Planul General",
     "flyby_1_outside": "Clădirea 1",
+    "flyby_1_inside": "Interiorul Clădirii 1",
+    "flyby_2_outside": "Clădirea 2",
+    "flyby_2_inside": "Interiorul Clădirii 2",
+    "flyby_3_outside": "Clădirea 3",
+    "flyby_3_inside": "Interiorul Clădirii 3",
     "favourites": "Favorite",
     "plannings": "Planuri"
   },
@@ -86,6 +91,9 @@
       "genplan": "Planul General",
       "navigation": "Navigare",
       "tooltip_1": "Clădirea 1",
+      "tooltip_2": "Clădirea 2",
+      "tooltip_3": "Clădirea 3",
+      "tooltip_4": "Clădirea 4",
       "flyby": "Clădiri",
       "flyby_1_outside": "Clădirea 1",
       "flyby_1_inside": "Interiorul Clădirii 1",

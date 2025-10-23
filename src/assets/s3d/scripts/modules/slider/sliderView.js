@@ -252,10 +252,14 @@ class SliderView extends EventEmitter {
     Object.entries(flybyAndBuildNamesMap).forEach(([build_name, flybyName]) => {
       // count flats in defined before flybys
       let flatsFilteredCountInFlyby = build_name.split('-');
+
       flatsFilteredCountInFlyby = flatsFilteredCountInFlyby.reduce((acc, build) => {
+        console.log('flats build', flats);
         acc += flats.filter(flat => flat == build).length;
         return acc;
       }, 0);
+
+      console.log('allFlatsBuild', flatsFilteredCountInFlyby);
 
       let totalFlatsInFlyby = build_name.split('-');
       totalFlatsInFlyby = totalFlatsInFlyby.reduce((acc, build) => {

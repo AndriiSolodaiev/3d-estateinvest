@@ -212,26 +212,11 @@ class InfoBox {
 
   updatePosition(e) {
     const target = e.target;
-    if (target.dataset.type == 'flat') {
-      const offset = 10; // расстояние между полигоном и инфобоксом
 
-      const target = e.target;
-      const targetRect = target.getBoundingClientRect();
-      const infoBox = this.infoBox;
-
-      // Координаты инфобокса: справа от полигона
-      const left = targetRect.right + offset;
-      const top = targetRect.top;
-
-      infoBox.style.position = 'fixed'; // позиционируем по окну
-      infoBox.style.left = `${left}px`;
-      infoBox.style.top = `${top}px`;
-    } else {
-      // передвигаем блок за мышкой
-      const { x, y } = placeElemInWrapperNearMouse(this.infoBox, document.documentElement, e, 20);
-      this.infoBox.style.top = `${y}px`;
-      this.infoBox.style.left = `${x}px`;
-    }
+    // передвигаем блок за мышкой
+    const { x, y } = placeElemInWrapperNearMouse(this.infoBox, document.documentElement, e, 20);
+    this.infoBox.style.top = `${y}px`;
+    this.infoBox.style.left = `${x}px`;
   }
 
   updateInfo(data) {

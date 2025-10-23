@@ -50,7 +50,7 @@ export default function SvgFlybyTooltip({
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 1.49988H1H6.66667H15H15.5V1.99988V7.53834V8.03834H15H14.1667V13.9999V14.4999H13.6667H4.5H4V13.9999V11.423H1H0.5V10.923V1.99988V1.49988ZM5 11.423V13.4999H13.1667V8.03834H12H11.5V7.03834H12H13.6667H14.5V2.49988H7.16667V3.99988V4.49988H6.16667V3.99988V2.49988H1.5V10.423H4.5H6.16667V7.99988V6.92296V6.42296H7.16667V6.92296V7.49988H9H9.5V8.49988H9H7.16667V10.923V11.423H6.66667H5Z" fill="#AEBECC"/>
               </svg>
-              ${i18n.t('infobox.available')}}
+              ${i18n.t('infobox.available')}
               ${totalFlatsInFlyby} 
             </div>
             ${$finishDate}

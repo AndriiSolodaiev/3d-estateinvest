@@ -28,17 +28,17 @@ $color-bg-overlays-transparent-80: rgba($color-gray-900, 0.8);
 $color-brand-700: rgb(248, 61, 70);
 $color-brand-800: rgb(231, 35, 47);
 $color-brand-900: rgb(185, 28, 38);
+$color-semantic-success: rgb(110, 150, 119);
 $color-brand-hover-overlays-transparent-32: rgba($color-brand-800, 0.32);
 $color-brand-hover-overlays-transparent-48: rgba($color-brand-800, 0.48);
-$color-brand-active-element-transparent-72: rgba($color-brand-800, 0.72);
+$color-brand-active-element-transparent-72: rgba($color-semantic-success, 0.8);
 
 $hover-overlays-transparent-32: rgba($color-brand-800, 0.32);
 $hover-overlays-transparent-48: rgba($color-brand-800, 0.48);
-$active-element-transparent-72: rgba($color-brand-800, 0.72);
+$active-element-transparent-72: rgba($color-semantic-success, 0.8);
 
 $color-effect-900-transparent-24: #2023263d;
 $color-effect-900-transparent-40: #20232666;
-$color-semantic-success: #83af8d;
 $color-semantic-warning: #f1b161;
 $color-semantic-warning-transparent-16: rgba($color-semantic-warning, 0.16);
 $color-semantic-info: #64a5f8;

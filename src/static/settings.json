@@ -19,18 +19,9 @@
     "horizontalAlign_faq": "left || center || right",
     "horizontalAlign": "center",
     "video_keyframes": {
-      
       "1": "/assets/s3d/images/v3_2-1.mp4"
-      
-    
     },
-    "controlPoint": [
-      1,
-      40,
-      80,
-      120,
-      160
-    ],
+    "controlPoint": [1, 40, 80, 120, 160],
     "activeSlide": 1,
     "rotateSpeedDefault": 20,
     "rotateSpeed": [
@@ -58,11 +49,7 @@
           "min": 0,
           "max": 119
         },
-        "controlPoint": [
-          5,
-          45,
-          85
-        ],
+        "controlPoint": [5, 45, 85],
         "activeSlide": 5,
         "rotateSpeedDefault": 20,
         "rotateSpeed": [],
@@ -84,12 +71,7 @@
           "min": 0,
           "max": 160
         },
-        "controlPoint": [
-          5,
-          45,
-          85,
-          125
-        ],
+        "controlPoint": [5, 45, 85, 125],
         "activeSlide": 5,
         "rotateSpeedDefault": 20,
         "rotateSpeed": [],
@@ -111,12 +93,7 @@
           "min": 0,
           "max": 159
         },
-        "controlPoint": [
-          5,
-          45,
-          85,
-          125
-        ],
+        "controlPoint": [5, 45, 85, 125],
         "activeSlide": 5,
         "rotateSpeedDefault": 20,
         "rotateSpeed": [],
@@ -154,7 +131,7 @@
   "flat": {
     "id": "flat",
     "viewType_faq": "viewType може бути двох видів: flat або villa",
-    "viewType": "villa",
+    "viewType": "flat",
     "generalWrapId": ".js-s3d__slideModule",
     "labelsToShowInInfoBlock": [
       {
@@ -186,9 +163,7 @@
     "faq_questions": [
       {
         "ignore": {
-          "build": [
-            2
-          ]
+          "build": [2]
         },
         "question": {
           "en": "What is the price of the flat?",
@@ -201,9 +176,7 @@
       },
       {
         "ignore": {
-          "build": [
-            1
-          ]
+          "build": [1]
         },
         "question": {
           "en": "What is the price of the flat?",
@@ -360,29 +333,19 @@
     }
   },
   "form": {
-    "prefered_countries": [
-      "md",
-      "ro", 
-      "ru"
-    ]
+    "prefered_countries": ["md", "ro", "ru"]
   },
   "flyby_finish_dates": {
-    "1-outside": "[[1]]",
-    "1-inside": "III 2026",
-    "2-outside": "[[2]]"
+    "1-outside": "IV 2028",
+    "2-outside": "IV 2028",
+    "3-outside": "IV 2028"
   },
   "assotiated_flat_builds_with_flybys": {
-    "1-outside": [
-      "1",
-      "2",
-      "3"
-    ],
-    "1-inside": [
-      "4",
-      "5"
-    ]
+    "1-outside": ["1"],
+    "2-outside": ["2", "3", "4"],
+    "3-outside": ["5", "6"]
   },
-  "project_google_map_location": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6447.122027859399!2d28.8896624!3d47.0685305!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDfCsDA0JzA4LjIiTiAyOMKwNTMnMjcuMSJF!5e1!3m2!1suk!2sua!4v1760107503436!5m2!1suk!2sua",
+  "project_google_map_location": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6248.966795389517!2d28.8896624!3d47.0685305!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDfCsDA0JzA4LjIiTiAyOMKwNTMnMjcuMSJF!5e1!3m2!1sen!2sua!4v1761219634730!5m2!1sen!2sua",
   "infoBoxes": {
     "general_flyby_button_titles": {
       "faq": "Можливі підписи для кнопок у інфобоксі обльоту : queue ,villa, house",
@@ -398,83 +361,87 @@
   },
   "currency_label": "€",
   "currency_value": "EUR",
-  "currency_list": [
-    
-    
-  ],
+  "currency_list": [],
   "show_prices": true,
   "languages": "ro/ru",
-  "show_phoneNumber": "044 256-47-59",
+  "show_phoneNumber": "068 494 999",
   "hideDocumentation": true,
   "hideExterior": true,
   "hideFinancialTerms": true,
   "hideConstructionProgress": true,
   "social_media_links_faq": "Якщо строчка пуста, то кнопка не буде відображатися",
   "social_media_links": {
-    "telegram": "https://web.telegram.org",
-    "viber": "https://viber.com",
-    "whatsapp": "https://whatsapp.com",
-    "youtube": "https://youtube.com",
-    "twitter": "https://x.com",
-    "tiktok": "#",
-    "facebook": "https://facebook.com",
-    "instagram": "https://instagram.com",
-    "linkedin": "https://linkedin.com"
+    "tiktok": "https://www.tiktok.com/@estateinvestcompany",
+    "facebook": "https://www.facebook.com/EstateInvestCompany",
+    "instagram": "https://www.instagram.com/estate_invest_company/"
   },
   "manager_info": {
-    "tel": "+380501234567",
+    "tel": "062 199 999",
     "name": {
-      "en": "Alex Smith",
-      "uk": "Олексій"
+      "en": "COLINA VERDE",
+      "uk": "COLINA VERDE",
+      "ro": "COLINA VERDE",
+      "ru": "COLINA VERDE"
     },
-    "img": "/wp-content/themes/3d/assets/s3d/images/manager.png",
+    "img": "/wp-content/themes/3d/assets/s3d/images/icon/developer.svg",
     "position": {
-      "en": "Sales manager",
-      "uk": "Менеджер з продажів"
+      "ro": "MANAGER VANZARI",
+      "ru": "МЕНЕДЖЕР ПО ПРОДАЖАМ",
+      "en": "SALES MANAGER",
+      "uk": "МЕНЕДЖЕР З ПРОДАЖУ"
     },
     "socials": {
-      "telegram": "https://web.telegram.org",
-      "viber": "https://viber.com",
-      "whatsapp": "https://whatsapp.com"
+      "telegram": "https://t.me/ColinaVerde",
+      "whatsapp": "https://wa.me/qr/BJJCML76SS5DP1",
+      "instagram": "https://www.instagram.com/colina_verde_residence?igsh=aGV0enZ2eW96anR2"
     }
   },
   "g_contacts": {
-    "email": "twins.vn.ua@gmail.com",
+    "email": "estateinvestmarketing@gmail.com",
     "construction_department": {
       "text": {
-        "en": "Vinnytsia, Keletska Street 123",
-        "uk": "Вінниця, вул. Келецька 321"
+        "en": "Moldova , Bucovina 3/1",
+        "uk": "Moldova , Bucovina 3/1",
+        "ro": "Republica Moldova, Bucovina 3/1",
+        "ru": "Республика Молдова, Bucovina 3/1"
       },
-      "google_maps_link": "https://maps.app.goo.gl/WGkxMs2WBk4Nown16"
+      "google_maps_link": "https://maps.app.goo.gl/8HiFNmwSVxJym2Wt9"
     },
     "sales_department": {
       "text": {
-        "en": "Vinnytsia, Magistratska Street, 91",
-        "uk": "м.Вінниця, Магістрацька вулиця, 82"
+        "en": "Moldova , Bucovina 3/1",
+        "uk": "Moldova , Bucovina 3/1",
+        "ro": "Republica Moldova, Bucovina 3/1",
+        "ru": "Республика Молдова, Bucovina 3/1"
       },
-      "google_maps_link": "https://maps.app.goo.gl/WGkxMs2WBk4Nown16"
+      "google_maps_link": "https://maps.app.goo.gl/8HiFNmwSVxJym2Wt9"
     }
   },
   "g_contact_advantaged_list": [
     {
       "en": "Personalized Consultation",
-      "uk": "Персональна консультація"
+      "ro": "Consultanță personalizată",
+      "ru": "Персональная консультация"
     },
     {
       "en": "Customization Options",
-      "uk": "Параметри налаштування"
+      "ro": "Opțiuni de personalizare",
+      "ru": "Варианты персонализации"
     },
     {
       "en": "Financing Solutions",
-      "uk": "Фінансові умови"
+      "ro": "Soluții de finanțare",
+      "ru": "Финансовые решения"
     },
     {
       "en": "Interior Design Consultation",
-      "uk": "Консультація з дизайну інтер'єру"
+      "ro": "Consultanță în design interior",
+      "ru": "Консультация по дизайну интерьера"
     },
     {
-      "uk": "Rental Potential",
-      "en": "Rental Potential"
+      "en": "Rental Potential",
+      "ro": "Potencial de închiriere",
+      "ru": "Потенциал аренды"
     }
   ],
   "SLIDER_MOBILE_FINGER_SWIPE": true,

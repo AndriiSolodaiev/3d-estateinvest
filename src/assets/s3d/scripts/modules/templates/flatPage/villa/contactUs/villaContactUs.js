@@ -8,21 +8,24 @@ export default function renderVillaContact(i18n, managerInfo = {}, contactAdvant
     .toFixed(5)
     .slice(2)}`;
 
-  const $managerContacts = Object.entries(get(managerInfo, ['socials'], {})).map(([key, link]) => {
-    if (!link) return '';
-    return `
+  const $managerContacts = Object.entries(get(managerInfo, ['socials'], {}))
+    .map(([key, link]) => {
+      if (!link) return '';
+      return `
     <a href="${link}" class="s3d-villa__contact__manager__socials-link" target="_blank">
       ${socialMediaIcons[key]}
     </a>
-    `
-  }).join('');
+    `;
+    })
+    .join('');
 
   const lang = i18n.language;
 
-  const $advantagesList = contactAdvantagesList.map((advantage, index) => {
-    let title = get(advantage, ['title', lang], '');
-    if (!title) title = advantage['en'];
-    return `
+  const $advantagesList = contactAdvantagesList
+    .map((advantage, index) => {
+      let title = get(advantage, ['title', lang], '');
+      if (!title) title = advantage[`${lang}`];
+      return `
       <div class="s3d-villa__contact__advantages-item">
         <div class="s3d-villa__contact__advantages-item-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -34,7 +37,8 @@ export default function renderVillaContact(i18n, managerInfo = {}, contactAdvant
         </div>
       </div>
     `;
-  }).join('');
+    })
+    .join('');
 
   return `
     <div class="s3d-villa__contact">
@@ -65,9 +69,17 @@ export default function renderVillaContact(i18n, managerInfo = {}, contactAdvant
               ${get(managerInfo, ['position', lang], '')}
             </div>
             <div class="s3d-villa__contact__manager__img-wrap">
-              <img src="${get(managerInfo, ['img'], '/wp-content/themes/3d/assets/s3d/images/manager.png')}" alt="">
+              <img src="${get(
+                managerInfo,
+                ['img'],
+                '/wp-content/themes/3d/assets/s3d/images/manager.png',
+              )}" alt="">
             </div>
-            <a href="tel:${get(managerInfo, ['tel'], '')}" class="s3d-villa__contact__manager__phone">
+            <a href="tel:${get(
+              managerInfo,
+              ['tel'],
+              '',
+            )}" class="s3d-villa__contact__manager__phone">
               ${get(managerInfo, ['tel'], '')}
             </a>
             <div class="s3d-villa__contact__manager__socials">

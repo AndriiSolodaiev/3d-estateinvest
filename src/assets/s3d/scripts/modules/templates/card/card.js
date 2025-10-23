@@ -13,7 +13,7 @@ function Card(
   customatributeEnter = '',
   customatributeLeave = '',
   slide = false,
-  card_bottom_labels = []
+  card_bottom_labels = [],
 ) {
   const imageDefault = `${window.defaultModulePath}/images/examples/no-image.png`;
   const {
@@ -77,8 +77,8 @@ function Card(
   };
 
   const $price = () => {
-    if (!showPrices) return '';    
-    if (currency.trim() == '$') {      
+    if (!showPrices) return '';
+    if (currency.trim() == '$') {
       return `
         <div class="s3d-card__title">
           ${i18n.t('Flat.information.priceText')} ${numberWithCommas(price)} 
@@ -90,11 +90,11 @@ function Card(
         ${numberWithCommas(price)} ${i18n.t('Flat.information.priceText')}
       </div>
     `;
-  }
+  };
 
   const $priceM2 = () => {
     if (!showPrices) return '';
-    if (currency.trim() == '$') {      
+    if (currency.trim() == '$') {
       return `
         <div class="s3d-card__row">
           <div class="s3d-card__name">
@@ -120,21 +120,23 @@ function Card(
 
   const isFavourite = favouritesIds$.value.includes(id);
 
-  const $bottomLabels = card_bottom_labels.map(labelObj => {
-    if (!showPrices && labelObj.key == 'price' || labelObj.key == 'price_m2') return '';
-    if (!labelObj || !labelObj.label || !labelObj.key || flat[labelObj.key] === undefined) {
-      if (flat[labelObj.key] === undefined) {
-        console.warn(`[WARN] Card: flat object has no key '${labelObj.key}'`);
+  const $bottomLabels = card_bottom_labels
+    .map(labelObj => {
+      if ((!showPrices && labelObj.key == 'price') || labelObj.key == 'price_m2') return '';
+      if (!labelObj || !labelObj.label || !labelObj.key || flat[labelObj.key] === undefined) {
+        if (flat[labelObj.key] === undefined) {
+          console.warn(`[WARN] Card: flat object has no key '${labelObj.key}'`);
+        }
+        return '';
       }
-      return '';
-    }
 
-    return `
+      return `
       <div class="s3d-card__info-label">
         ${i18n.t(labelObj.label)}: ${flat[labelObj.key]}
       </div>
     `;
-  }).join('');
+    })
+    .join('');
 
   return `
     <div class="${
@@ -144,12 +146,16 @@ function Card(
       <div class="s3d-card__header">
         <div class="left">
           ${$status(i18n, flat)}
-          ${project_deadline ? `
+          ${
+            project_deadline
+              ? `
             <div class="s3d-card__badge">
               ${project_deadline}
               ${s3d2spriteIcon('Construction', 's3d-card__badge-icon')}
             </div>
-            ` : ''}
+            `
+              : ''
+          }
         </div>
         <div class="right">
           ${$addToFavourite(i18n, flat, favouritesIds$)}
@@ -158,21 +164,20 @@ function Card(
         <!-- ${$number(i18n, flat)} -->
       </div>
       <div class="s3d-card__middle">
-        <div>${type}</div>
+        <div>${rooms} ${i18n.t('Flat.information.rooms')}</div>
         <div class="decorative-slash">/</div>
         <div>${area} ${i18n.t('Flat.information.area_unit')}</div>
         <!-- <div>${area} м²</div> -->
       </div>
       <div class="s3d-card__image">
-        <img src="${src || imageDefault}" onerror="this.src='${imageDefault}'" data-key="src" loading="lazy">
+        <img src="${src ||
+          imageDefault}" onerror="this.src='${imageDefault}'" data-key="src" loading="lazy">
       </div>
       <div class="s3d-card__info-wrapper">
         <div class="s3d-card__table">
           ${$priceM2()}
         </div>
-        ${
-          $price()
-        }
+        ${$price()}
         <div class="s3d-card__info-label-wrapper">
           ${$bottomLabels}
         </div>

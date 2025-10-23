@@ -23,8 +23,8 @@
   &__title {
     @include text-style-3-d-fonts-1920-h-2-regular;
     color: var(--text-gray-200);
-    border: 1px solid var(--border-brand-900);
-    background-color: var(--color-surface-brand-800);
+    border: 1px solid var(--border-gray-900);
+    background-color: var(--border-gray-900);
     border-radius: var(--border-space-1);
     padding: 2px 12px;
     grid-area: title;

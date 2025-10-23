@@ -9,12 +9,19 @@ import { AppNetworkError } from '../errors';
 import gsap from 'gsap';
 import { themeFactory } from '../templates/controller/$theme';
 import SliderPopup from '../sliderPopup/sliderPopup';
-import { compareObjectByKeys, getBrowser, isMobile, loader, millisToMinutesAndSeconds, isFullUrl } from '../helpers/helpers';
+import {
+  compareObjectByKeys,
+  getBrowser,
+  isMobile,
+  loader,
+  millisToMinutesAndSeconds,
+  isFullUrl,
+} from '../helpers/helpers';
 import dispatchTrigger from '../helpers/triggers';
 import browserInfo from '../helpers/browserInfo';
 import PinchZoom from 'pinch-zoom-js';
 import { detect } from 'detect-browser';
-import device from "current-device";
+import device from 'current-device';
 import { isDesktopTouchMode, isTablet } from '../../../../s3d2/scripts/helpers/helpers_s3d2';
 
 class SliderModel extends EventEmitter {
@@ -115,8 +122,16 @@ class SliderModel extends EventEmitter {
     this.assotiated_flat_builds_with_flybys = config.assotiated_flat_builds_with_flybys || {};
     this.flyby_finish_dates = config.flyby_finish_dates || {};
 
-    this.g_getFlybyMinPriceM2 = config.getFlybyMinPriceM2 || function() { return ''; };
-    this.g_getFlybyMinPrice = config.getFlybyMinPrice || function() { return ''; };
+    this.g_getFlybyMinPriceM2 =
+      config.getFlybyMinPriceM2 ||
+      function() {
+        return '';
+      };
+    this.g_getFlybyMinPrice =
+      config.getFlybyMinPrice ||
+      function() {
+        return '';
+      };
 
     this.enableParalax = config.enableParalax;
     this.enableClouds = config.enableClouds;
@@ -128,14 +143,12 @@ class SliderModel extends EventEmitter {
       document.querySelectorAll('.s3d-ctr__menu-3d-compass-nav').forEach(el => {
         el.style.pointerEvents = value ? 'none' : '';
         el.style.opacity = value ? '0.5' : '';
-      })
+      });
     });
     this.video_keyframes = config.video_keyframes || {};
-    this.videoKeyframesToRender = {
-    };
+    this.videoKeyframesToRender = {};
     this.SLIDER_MOBILE_FINGER_SWIPE = config.SLIDER_MOBILE_FINGER_SWIPE || false;
     this.parent = config.parent;
-
   }
 
   disableInfoBox() {
@@ -169,7 +182,8 @@ class SliderModel extends EventEmitter {
       event.target.classList.contains('s3d__button') ||
       this.isRotating$.value ||
       event.target.classList.contains('s3d-infoBox__link') // если клик по кнопкам/ссылке или модуль вращается то выходим
-    ) return;
+    )
+      return;
     this.isKeyDown = true;
     this.emit('changeContainerCursor', 'grabbing');
     this.cancelAnimateSlide();
@@ -194,12 +208,12 @@ class SliderModel extends EventEmitter {
       this.infoBox.updatePosition(event);
       this.infoBox.changeState('hover', config);
     } else if (event.target.closest('g[data-type]')) {
-        const config = {
-          ...event.target.closest('g[data-type]').dataset,
-        };
+      const config = {
+        ...event.target.closest('g[data-type]').dataset,
+      };
 
-        this.infoBox.updatePosition(event);
-        this.infoBox.changeState('hover', config);
+      this.infoBox.updatePosition(event);
+      this.infoBox.changeState('hover', config);
     } else {
       this.infoBox.changeState('static');
     }
@@ -209,12 +223,12 @@ class SliderModel extends EventEmitter {
 
   changeFlybyTooltipZPosition(event) {
     if (event.target.dataset.type === 'flyby') {
-      const svgWrap  = event.target.closest('svg');
+      const svgWrap = event.target.closest('svg');
       const id = `tooltip${event.target.dataset.flyby}-${event.target.dataset.side}`;
       svgWrap.querySelectorAll(`[data-build-flat-count-element][data-id="${id}"]`).forEach(el => {
         if (!el.nextElementSibling) return;
         svgWrap.insertAdjacentElement('beforeend', el);
-      })
+      });
     }
   }
 
@@ -229,7 +243,7 @@ class SliderModel extends EventEmitter {
           console.warn(`slider images with ID ${id} not found`);
           return;
         }
-        new SliderPopup(this.sliderPopup[id]).render()
+        new SliderPopup(this.sliderPopup[id]).render();
       },
       section: type => this.updateFsm({ type, ...event.currentTarget.dataset }),
       flyby: type => this.updateFsm({ type, ...event.currentTarget.dataset }, true),
@@ -290,15 +304,15 @@ class SliderModel extends EventEmitter {
   createAndAnimate(event) {
     console.log('touchPolygonHandler', this);
     const clonedImage = this.wrapperSvg.cloneNode(true);
-    const targetCenterX = event.target.getBoundingClientRect().left + event.target.getBoundingClientRect().width / 2;
-    const targetCenterY = event.target.getBoundingClientRect().top + event.target.getBoundingClientRect().height / 2;
+    const targetCenterX =
+      event.target.getBoundingClientRect().left + event.target.getBoundingClientRect().width / 2;
+    const targetCenterY =
+      event.target.getBoundingClientRect().top + event.target.getBoundingClientRect().height / 2;
     const targetW = event.target.getBoundingClientRect().width;
     const targetHeight = event.target.getBoundingClientRect().height;
 
     const ratio = window.innerWidth / targetW;
     console.log('ratio', ratio);
-    
-    
 
     clonedImage.style.cssText = `
       position: absolute;
@@ -345,46 +359,56 @@ class SliderModel extends EventEmitter {
     // return;
     const svg = tempWrap.querySelector('svg');
 
-    let tl = gsap.timeline({
-      onComplete: () => {
-        tempWrap.remove();
-      }
-    })
-      .fromTo(svg.querySelector('image'), {
-        scale: 1,
-      }, {
-        scale: Math.min(ratio, 3),
-        duration: 1.75,
-        // opacity: 0,
-        ease: 'power3.inOut'
+    let tl = gsap
+      .timeline({
+        onComplete: () => {
+          tempWrap.remove();
+        },
       })
-      .fromTo(svg.querySelector('[mask="url(#cutout)"]'), {
-        autoAlpha: 1,
-      },{
-        autoAlpha: 0,
-        duration: 1.75,
-        // opacity: 0,
-        ease: 'power3.inOut'
-      },'<')
-      // .fromTo(svg.querySelector('[data-animated-rect]'), {
-      //   attr: {
-      //     x: targetCenterX,
-      //     y:  targetCenterY,
-      //     width: 0,
-      //     height: 0
-      //   },
-      // }, {
-      //   attr: {
-      //     x: 0,
-      //     y: 0,
-      //     width: window.innerWidth,
-      //     height: window.innerHeight,
-      //   },
-      //   duration: 1.75,
-      //   // opacity: 0,
-      //   ease: 'power3.inOut'
-      // }, '<')
-  } 
+      .fromTo(
+        svg.querySelector('image'),
+        {
+          scale: 1,
+        },
+        {
+          scale: Math.min(ratio, 3),
+          duration: 1.75,
+          // opacity: 0,
+          ease: 'power3.inOut',
+        },
+      )
+      .fromTo(
+        svg.querySelector('[mask="url(#cutout)"]'),
+        {
+          autoAlpha: 1,
+        },
+        {
+          autoAlpha: 0,
+          duration: 1.75,
+          // opacity: 0,
+          ease: 'power3.inOut',
+        },
+        '<',
+      );
+    // .fromTo(svg.querySelector('[data-animated-rect]'), {
+    //   attr: {
+    //     x: targetCenterX,
+    //     y:  targetCenterY,
+    //     width: 0,
+    //     height: 0
+    //   },
+    // }, {
+    //   attr: {
+    //     x: 0,
+    //     y: 0,
+    //     width: window.innerWidth,
+    //     height: window.innerHeight,
+    //   },
+    //   duration: 1.75,
+    //   // opacity: 0,
+    //   ease: 'power3.inOut'
+    // }, '<')
+  }
 
   getSvgActive() {
     return this.activeSvg;
@@ -409,7 +433,7 @@ class SliderModel extends EventEmitter {
     this.setSvgActive(id);
     this.parent.emit('change_keyframe', {
       ...this.settings,
-      controlPoint: id
+      controlPoint: id,
     });
     this.emit('changeSvgActive', this.getSvgActive());
   }
@@ -423,16 +447,24 @@ class SliderModel extends EventEmitter {
     flat: () => {
       this.emit('filteredPolygonRemoveClass', 'flat');
       const flats = this.currentFilteredFlatIds$.value;
-      this.emit('showSelectedFlats', {
-        flats,
-        isFilterParamsSelected: Object.keys(this.flatList).length === flats.length
-      }, this.flatList);
-      this.emit('showFlatCountOnBuild',
+      this.emit(
+        'showSelectedFlats',
         {
-          filtered: flats.map(flatId => this.getFlat(flatId)).filter(flat => flat.sale == '1').map(el => el.build),
-          allFlatsBuild: Object.values(this.flatsList).filter(flat => flat.sale == '1').map(el => el.build),
-          all: Object.values(this.flatsList).filter(flat => flat.sale == '1').length
-        });
+          flats,
+          isFilterParamsSelected: Object.keys(this.flatList).length === flats.length,
+        },
+        this.flatList,
+      );
+      this.emit('showFlatCountOnBuild', {
+        filtered: flats
+          .map(flatId => this.getFlat(flatId))
+          .filter(flat => flat.sale == '1')
+          .map(el => el.section),
+        allFlatsBuild: Object.values(this.flatsList)
+          .filter(flat => flat.sale == '1')
+          .map(el => el.section),
+        all: Object.values(this.flatsList).filter(flat => flat.sale == '1').length,
+      });
     },
   };
 
@@ -497,7 +529,7 @@ class SliderModel extends EventEmitter {
     window.addEventListener('resize', () => {
       this.deb(this);
     });
-    if (((isMobile() || isDesktopTouchMode()) && this.SLIDER_MOBILE_FINGER_SWIPE)) {
+    if ((isMobile() || isDesktopTouchMode()) && this.SLIDER_MOBILE_FINGER_SWIPE) {
       this.changeFramesOnSwipe();
     }
   }
@@ -507,138 +539,141 @@ class SliderModel extends EventEmitter {
 
   updateCompass(activeSlide) {
     if (activeSlide) {
-      this.currentCompassDeg = (360 / this.numberSlide.max * activeSlide) + (360 / this.numberSlide.max * this.startDegCompass);
+      this.currentCompassDeg =
+        (360 / this.numberSlide.max) * activeSlide +
+        (360 / this.numberSlide.max) * this.startDegCompass;
     }
     this.compass(this.currentCompassDeg);
     this.addToggleThemeButton();
   }
 
-// ---- загрузка картинок слайдера ----
-async uploadPictures(hd) {
-    
-  const now = new Date().getTime();
-  this.isRotating$.next(true);
-  this.ctx.canvas.width = this.width;
-  this.ctx.canvas.height = this.height;
+  // ---- загрузка картинок слайдера ----
+  async uploadPictures(hd) {
+    const now = new Date().getTime();
+    this.isRotating$.next(true);
+    this.ctx.canvas.width = this.width;
+    this.ctx.canvas.height = this.height;
 
-  this.preloader.turnOn();
-  document.querySelector('[data-flyby-load-element]').classList.add('inLoad');
-  
-  const self = this;
-  const imageSrc = (index) => {
-    if (window.status === 'local') {
-      return 'images/flyby/masterplan/';
-    }
-    if (self.theme === 'dark') {
-      return self.imageUrlDark;
-    }
-    if (hd) {
-      return self.sd_imageUrl
-    }
-    if (!self.sd_imageUrl) {
-      return self.imageUrl
-    }
-    if (self.controlPoint.includes(index)) {
-      return self.imageUrl;
-    }
-    if (self.sd_imageUrl && isTablet()) {
-      return self.sd_imageUrl;
-    }
-    if (self.sd_imageUrl && isMobile()) {
-      return self.sd_imageUrl;
-    }
-    return self.sd_imageUrl
-  }
-  const urlsOfImagesToLoad = [...Array(this.numberSlide.max+1).keys()].map((el, index) => {
-    return `${defaultModulePath}/${imageSrc(index)}${index}.${self.image_format}`;
-  })
+    this.preloader.turnOn();
+    document.querySelector('[data-flyby-load-element]').classList.add('inLoad');
 
-
-  this.preloader.miniOn();
-
-  this.loadSingleImage(`${defaultModulePath}/${imageSrc(this.activeElem)}${this.activeElem}.${self.image_format}`);
-
-  let yOffset = 0;
-
-
-  this.arrayImages = await this.uploadNew( urlsOfImagesToLoad,document.querySelector('.fs-preloader-amount'), (image) => {
-    this.ctx.clearRect(0, 0, this.width, this.height);
-    this.ctx.drawImage(image,0, yOffset, this.width, this.height );
-
-    this.changeSvgActive(this.activeElem);
-    this.emit('showActiveSvg');
-    this.infoBox.disable(false);
-  });
-  this.arrayBase64Images = [ ...this.arrayImages.map(el=>el.src)];
-  if (!this.imagesStore[this.theme]) {
-    this.imagesStore[this.theme] = [...this.arrayBase64Images];
-  }
-  this.loadVideoKeyframes();
-
-
-  
-
-  this.ctx.clearRect(0, 0, this.width, this.height);
-  // this.ctx.drawImage(this.arrayImages[this.activeElem], xOffset, yOffset, this.width, this.height, 0, 0, this.width, this.height);
-  if (this.wrapperSvg) {
-    this.wrapperSvg.setAttribute('src', this.arrayBase64Images[this.activeElem]);
-  }
-  // this.ctx.drawImage(this.arrayImages[this.activeElem],0, yOffset, this.width, this.height );
-  this.resizeCanvas();
-  this.updateCompass(this.activeElem);
-
-  this.isRotating$.next(false);
-  document.querySelector('[data-flyby-load-element]').classList.remove('inLoad');
-  dispatchTrigger('flybyLoaded', {
-    result: 'success',
-    timePlain: Math.abs(now - new Date().getTime()),
-    time: millisToMinutesAndSeconds(Math.abs(now - new Date().getTime())),
-    url: window.location.href,
-    flybyId: this.id,
-    browser: getBrowser(),
-    ...browserInfo(),
-  });
-
-  setTimeout(() => {
-    this.preloader.miniOff();
-    this.preloader.turnOff($(this.wrapper).find('.s3d__button'));
-    this.preloader.turnOff($('.s3d-ctr__option .js-s3d-nav__btn'));
-    this.preloader.turnOff();
-    this.preloaderWithoutPercent.hide();
-    this.emit('changeFlatActive', this.settings.markedFlat);
-    if (typeof this.cbOnInit === 'function') {
-      this.cbOnInit();
-    }
-  }, 500);
-
-  // this.isRotating$.next(false);
-  // this.changeSvgActive(this.activeElem);
-  // this.emit('showActiveSvg');
-  // this.infoBox.disable(false);
-  this.isInited = true;
-  if (this.sliderDataWithHistory.controlPoint) {
-    this.toControlPoint(this.sliderDataWithHistory.flatId || null, this.sliderDataWithHistory.controlPoint);
-  }
-
-  if (this.sd_imageUrl)  {
-    loader(( { fastSpeed } ) => {
-      if (fastSpeed) {
-        setTimeout(() => {
-          // this.uploadQualityPictures();
-        }, 3000);
+    const self = this;
+    const imageSrc = index => {
+      if (window.status === 'local') {
+        return 'images/flyby/masterplan/';
       }
+      if (self.theme === 'dark') {
+        return self.imageUrlDark;
+      }
+      if (hd) {
+        return self.sd_imageUrl;
+      }
+      if (!self.sd_imageUrl) {
+        return self.imageUrl;
+      }
+      if (self.controlPoint.includes(index)) {
+        return self.imageUrl;
+      }
+      if (self.sd_imageUrl && isTablet()) {
+        return self.sd_imageUrl;
+      }
+      if (self.sd_imageUrl && isMobile()) {
+        return self.sd_imageUrl;
+      }
+      return self.sd_imageUrl;
+    };
+    const urlsOfImagesToLoad = [...Array(this.numberSlide.max + 1).keys()].map((el, index) => {
+      return `${defaultModulePath}/${imageSrc(index)}${index}.${self.image_format}`;
     });
-  }
-  if (this.activeFlat) {
-    this.emit('changeFlatActive', this.sliderDataWithHistory.flatId);
-    this.infoBox.changeState('active', { id: this.activeFlat });
-  }
-}
 
+    this.preloader.miniOn();
+
+    this.loadSingleImage(
+      `${defaultModulePath}/${imageSrc(this.activeElem)}${this.activeElem}.${self.image_format}`,
+    );
+
+    let yOffset = 0;
+
+    this.arrayImages = await this.uploadNew(
+      urlsOfImagesToLoad,
+      document.querySelector('.fs-preloader-amount'),
+      image => {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+        this.ctx.drawImage(image, 0, yOffset, this.width, this.height);
+
+        this.changeSvgActive(this.activeElem);
+        this.emit('showActiveSvg');
+        this.infoBox.disable(false);
+      },
+    );
+    this.arrayBase64Images = [...this.arrayImages.map(el => el.src)];
+    if (!this.imagesStore[this.theme]) {
+      this.imagesStore[this.theme] = [...this.arrayBase64Images];
+    }
+    this.loadVideoKeyframes();
+
+    this.ctx.clearRect(0, 0, this.width, this.height);
+    // this.ctx.drawImage(this.arrayImages[this.activeElem], xOffset, yOffset, this.width, this.height, 0, 0, this.width, this.height);
+    if (this.wrapperSvg) {
+      this.wrapperSvg.setAttribute('src', this.arrayBase64Images[this.activeElem]);
+    }
+    // this.ctx.drawImage(this.arrayImages[this.activeElem],0, yOffset, this.width, this.height );
+    this.resizeCanvas();
+    this.updateCompass(this.activeElem);
+
+    this.isRotating$.next(false);
+    document.querySelector('[data-flyby-load-element]').classList.remove('inLoad');
+    dispatchTrigger('flybyLoaded', {
+      result: 'success',
+      timePlain: Math.abs(now - new Date().getTime()),
+      time: millisToMinutesAndSeconds(Math.abs(now - new Date().getTime())),
+      url: window.location.href,
+      flybyId: this.id,
+      browser: getBrowser(),
+      ...browserInfo(),
+    });
+
+    setTimeout(() => {
+      this.preloader.miniOff();
+      this.preloader.turnOff($(this.wrapper).find('.s3d__button'));
+      this.preloader.turnOff($('.s3d-ctr__option .js-s3d-nav__btn'));
+      this.preloader.turnOff();
+      this.preloaderWithoutPercent.hide();
+      this.emit('changeFlatActive', this.settings.markedFlat);
+      if (typeof this.cbOnInit === 'function') {
+        this.cbOnInit();
+      }
+    }, 500);
+
+    // this.isRotating$.next(false);
+    // this.changeSvgActive(this.activeElem);
+    // this.emit('showActiveSvg');
+    // this.infoBox.disable(false);
+    this.isInited = true;
+    if (this.sliderDataWithHistory.controlPoint) {
+      this.toControlPoint(
+        this.sliderDataWithHistory.flatId || null,
+        this.sliderDataWithHistory.controlPoint,
+      );
+    }
+
+    if (this.sd_imageUrl) {
+      loader(({ fastSpeed }) => {
+        if (fastSpeed) {
+          setTimeout(() => {
+            // this.uploadQualityPictures();
+          }, 3000);
+        }
+      });
+    }
+    if (this.activeFlat) {
+      this.emit('changeFlatActive', this.sliderDataWithHistory.flatId);
+      this.infoBox.changeState('active', { id: this.activeFlat });
+    }
+  }
 
   async uploadQualityPictures() {
     this.uploadPicture = (index, cb, countRepeatLoad = 0) => {
-
       const self = this;
       const img = new Image();
 
@@ -660,7 +695,7 @@ async uploadPictures(hd) {
           }
         };
       });
-      const imageSrc = (index) => self.imageUrl;
+      const imageSrc = index => self.imageUrl;
 
       img.src = `${defaultModulePath}/${imageSrc(index)}${index}.${self.image_format}`;
       return promise;
@@ -684,8 +719,6 @@ async uploadPictures(hd) {
       });
   }
 
-
-
   enableFlatInfoBoxOnDestopTouchDevices(event) {
     document.querySelector('.js-s3d-infoBox').classList.add('desktop-touch');
   }
@@ -703,7 +736,7 @@ async uploadPictures(hd) {
       const target = evt.target.closest('[data-mobile-theme-switcher]');
       if (!target) return;
       const theme = target.getAttribute('data-mobile-theme-switcher');
-      this.theme  = theme;      
+      this.theme = theme;
       document.querySelectorAll('[data-mobile-theme-switcher]').forEach(el => {
         el.classList.toggle('active', this.theme === el.dataset.mobileThemeSwitcher);
       });
@@ -741,7 +774,6 @@ async uploadPictures(hd) {
     this.imageUrl = baseImageUrl;
     this.uploadPictures();
   }
-
 
   // высчитывает прогресс загрузки картинок
   progressBarUpdate() {
@@ -798,7 +830,8 @@ async uploadPictures(hd) {
     }
     if (id) {
       this.settings = { ...this.settings, markedFlat: id };
-      if (this.history.getParam('markedFlat')) this.emit('changeFlatActive', this.settings.markedFlat);
+      if (this.history.getParam('markedFlat'))
+        this.emit('changeFlatActive', this.settings.markedFlat);
       this.synchronizeThemeButtonWithCurrentTheme();
     }
     if (!controlPoint) return;
@@ -812,8 +845,7 @@ async uploadPictures(hd) {
       this.isRotating$.next(false);
       this.amountSlideForChange = 0;
       this.emit('hideActiveSvg');
-      const go = (nextSlide) => {
-
+      const go = nextSlide => {
         this.updateCompass(nextSlide);
         this.updateHorizontalCompass(nextSlide);
         // this.ctx.drawImage(this.arrayImages[nextSlide], 0, 0, this.width, this.height);
@@ -825,21 +857,21 @@ async uploadPictures(hd) {
           this.activeElem = +controlPoint;
           this.changeSvgActive(this.activeElem);
           this.emit('showActiveSvg');
-          if (this.history.getParam('markedFlat')) this.emit('changeFlatActive', this.settings.markedFlat);
+          if (this.history.getParam('markedFlat'))
+            this.emit('changeFlatActive', this.settings.markedFlat);
           this.history.update({
-            controlPoint: controlPoint
-          })
+            controlPoint: controlPoint,
+          });
           return;
         }
         setTimeout(() => {
-          go(nextSlide === this.numberSlide.max ? 0 :nextSlide+1)
+          go(nextSlide === this.numberSlide.max ? 0 : nextSlide + 1);
         }, 1000 / 50);
-      }
+      };
       go(current);
-    }
+    };
     animate(this.activeElem, +controlPoint);
     return;
-
   }
 
   // start block  change slide functions
@@ -847,7 +879,7 @@ async uploadPictures(hd) {
   toSlideNum(id, slides, prevMarkedFlat) {
     if (!prevMarkedFlat) {
       this.emit('removeActiveFlatNewMethod');
-      this.settings = { ...this.settings, markedFlat: null }
+      this.settings = { ...this.settings, markedFlat: null };
     }
     let needChangeSlide = true;
     let pointsSlide;
@@ -886,13 +918,13 @@ async uploadPictures(hd) {
         this.emit('showActiveSvg');
         if (this.history.getParam('markedFlat')) {
           this.emit('changeFlatActive', this.history.getParam('markedFlat'));
-          this.settings = { ...this.settings, markedFlat: this.history.getParam('markedFlat') }
+          this.settings = { ...this.settings, markedFlat: this.history.getParam('markedFlat') };
         } else {
-          this.settings = { ...this.settings, markedFlat: null }
+          this.settings = { ...this.settings, markedFlat: null };
         }
         this.history.update({
-          controlPoint: nextSlideId
-        })
+          controlPoint: nextSlideId,
+        });
         this.infoBox.disable(false);
         this.isRotating$.next(false);
         this.amountSlideForChange = 0;
@@ -903,7 +935,7 @@ async uploadPictures(hd) {
   showDifferentPointWithoutRotate(arrayIdNewPoint, flatId, prevMarkedFlat) {
     if (!prevMarkedFlat) {
       this.emit('removeActiveFlatNewMethod');
-      this.settings = { ...this.settings, markedFlat: null }
+      this.settings = { ...this.settings, markedFlat: null };
     }
     if (!arrayIdNewPoint || arrayIdNewPoint.length === 0) {
       this.synchronizeThemeButtonWithCurrentTheme();
@@ -920,8 +952,8 @@ async uploadPictures(hd) {
     // this.ctx.drawImage(this.arrayImages[idNewPoint], 0, 0, this.width, this.height);
     this.activeElem = idNewPoint;
     this.history.update({
-      controlPoint: idNewPoint
-    })
+      controlPoint: idNewPoint,
+    });
     this.changeSvgActive(idNewPoint);
     this.emit('showActiveSvg');
 
@@ -961,8 +993,8 @@ async uploadPictures(hd) {
       type === 'next' ||
       (type === undefined &&
         (this.nearestControlPoint.max - this.nearestControlPoint.min) / 2 +
-        this.nearestControlPoint.min <=
-        this.activeElem)
+          this.nearestControlPoint.min <=
+          this.activeElem)
     ) {
       if (this.nearestControlPoint.max <= this.numberSlide.max) {
         return { direction: 'next', nextPoint: this.nearestControlPoint.max };
@@ -1095,8 +1127,14 @@ async uploadPictures(hd) {
     const maxFrame = +this.numberSlide.max;
     const framesLength = +this.numberSlide.max + 1;
 
-    const compassWrapperWidth = document.querySelector('.s3d-ctr__menu-3d__compass').getBoundingClientRect().width.toFixed(0);
-    const compassWidth = document.querySelector('[data-controller-compass]').getBoundingClientRect().width.toFixed(0);
+    const compassWrapperWidth = document
+      .querySelector('.s3d-ctr__menu-3d__compass')
+      .getBoundingClientRect()
+      .width.toFixed(0);
+    const compassWidth = document
+      .querySelector('[data-controller-compass]')
+      .getBoundingClientRect()
+      .width.toFixed(0);
     const translationXSum = compassWidth - compassWrapperWidth;
 
     const segmentOfSingleTranslation = translationXSum / framesLength;
@@ -1104,13 +1142,12 @@ async uploadPictures(hd) {
     let iterator = 0;
     for (let i = this.frameWithNorthDirection; i <= maxFrame; i++) {
       this.arrayOfPreparedCompassTranslation[i] = iterator * segmentOfSingleTranslation;
-      iterator ++;
+      iterator++;
     }
     for (let i = 0; i < this.frameWithNorthDirection; i++) {
       this.arrayOfPreparedCompassTranslation[i] = iterator * segmentOfSingleTranslation;
-      iterator ++;
+      iterator++;
     }
-
   }
 
   async blobToBase64(blob) {
@@ -1121,7 +1158,7 @@ async uploadPictures(hd) {
         resolve(reader.result);
       };
     });
-  };
+  }
 
   async loadSingleImage(url) {
     const response = await axios.get(url, { responseType: 'blob' });
@@ -1133,51 +1170,53 @@ async uploadPictures(hd) {
         this.wrapperSvg.setAttribute('src', URL.createObjectURL(response.data));
       }
       // this.ctx.drawImage(img, 0, 0, this.width, this.height);
-    }
+    };
   }
 
   async uploadNew(urls, progressElement, onLoadFirstKeyFrame = () => {}) {
-    
     const startLoadTime = new Date().getTime();
     this.preloaderWithoutPercent.hide();
     let total = '';
     let imagesLoaded = 0;
 
-    const controlPointsImages = await Promise.all(this.controlPoint.map(async (el, index) => {
-      let res = await axios.get(urls[el]+`?device=${device.type}`, { responseType: 'blob' });
-      const img = new Image();
-      const imgSrc = await this.blobToBase64(res.data);
-      img.src = imgSrc;
-      if (el === this.activeElem) {
-        onLoadFirstKeyFrame(img);
-      }
-      return img;
-    }));
+    const controlPointsImages = await Promise.all(
+      this.controlPoint.map(async (el, index) => {
+        let res = await axios.get(urls[el] + `?device=${device.type}`, { responseType: 'blob' });
+        const img = new Image();
+        const imgSrc = await this.blobToBase64(res.data);
+        img.src = imgSrc;
+        if (el === this.activeElem) {
+          onLoadFirstKeyFrame(img);
+        }
+        return img;
+      }),
+    );
 
-    const restOfImages = await Promise.all(urls.map(async (url, index) => {
+    const restOfImages = await Promise.all(
+      urls.map(async (url, index) => {
+        if (this.controlPoint.includes(index)) {
+          const indexInLoadedImages = this.controlPoint.indexOf(index);
+          return Promise.resolve(controlPointsImages[indexInLoadedImages]);
+        }
 
-      if (this.controlPoint.includes(index)) {
-        const indexInLoadedImages = this.controlPoint.indexOf(index);
-        return Promise.resolve(controlPointsImages[indexInLoadedImages]);
-      }
+        const res = await axios.get(url + `?device=${device.type}`, { responseType: 'blob' });
+        const img = new Image();
+        const imgSrc = await this.blobToBase64(res.data);
+        img.src = imgSrc;
+        if (index === this.activeElem) {
+          onLoadFirstKeyFrame(img);
+        }
+        imagesLoaded++;
 
-      const res = await axios.get(url+`?device=${device.type}`, { responseType: 'blob' });
-      const img = new Image();
-      const imgSrc = await this.blobToBase64(res.data);
-      img.src = imgSrc;
-      if (index === this.activeElem) {
-        onLoadFirstKeyFrame(img);
-      }
-      imagesLoaded++;
-
-      document.querySelectorAll('.fs-preloader-amount').forEach(el => {
-        el.innerHTML = Math.ceil(imagesLoaded * 100 / urls.length) + '%';
-      });
-      document.querySelectorAll('[data-flyby-visual-load-element]').forEach(el => {        
-        el.style.transform = `scaleX(${imagesLoaded / urls.length})`;
-      });
-      return img;
-    }));
+        document.querySelectorAll('.fs-preloader-amount').forEach(el => {
+          el.innerHTML = Math.ceil((imagesLoaded * 100) / urls.length) + '%';
+        });
+        document.querySelectorAll('[data-flyby-visual-load-element]').forEach(el => {
+          el.style.transform = `scaleX(${imagesLoaded / urls.length})`;
+        });
+        return img;
+      }),
+    );
 
     document.querySelectorAll('.fs-preloader-amount').forEach(el => {
       el.innerHTML = `360°`;
@@ -1196,19 +1235,18 @@ async uploadPictures(hd) {
         height: window.innerHeight,
       },
       browser: detect(),
-    })
+    });
 
     return restOfImages;
   }
 
   pinchZoomOnMobile() {
     if (isMobile()) {
-
       const pzoom = new PinchZoom(this.wrapper[0], {
         lockDragAxis: true,
         use2d: false,
         // minZoom: 1,
-        draggableUnzoomed: false
+        draggableUnzoomed: false,
       });
     }
   }
@@ -1224,7 +1262,7 @@ async uploadPictures(hd) {
       themeSwitcher.classList.add(`dark-theme`);
     } else {
       themeSwitcher.classList.remove('dark-theme');
-    }    
+    }
     themeSwitcher.classList.toggle('s3d-display-none', !!this.imageUrlDark === false);
 
     document.querySelectorAll('[data-mobile-theme-switcher]').forEach(el => {
@@ -1234,32 +1272,48 @@ async uploadPictures(hd) {
 
   paralax() {
     this.wrapper[0].querySelector('.js-s3d__wrapper__canvas').style.transform = 'scale(1.05)';
-    this.wrapper[0].querySelector('.js-s3d__wrapper__canvas').addEventListener('mousemove', this.moveWrapper.bind(this));
+    this.wrapper[0]
+      .querySelector('.js-s3d__wrapper__canvas')
+      .addEventListener('mousemove', this.moveWrapper.bind(this));
   }
 
   moveWrapper(e) {
-    const wrapperSizes = this.wrapper[0].querySelector('.js-s3d__wrapper__canvas').getBoundingClientRect();
-    const xOffset = gsap.utils.mapRange(0, wrapperSizes.width, this.PARALAX_AMOUNT, this.PARALAX_AMOUNT*-1, e.clientX);
-    const yOffset = gsap.utils.mapRange(0, wrapperSizes.height, this.PARALAX_AMOUNT, this.PARALAX_AMOUNT * -1, e.clientY);
-    this.wrapper[0].querySelector('.js-s3d__wrapper__canvas').style.transform = `scale(1.05) translate(${xOffset}px, ${yOffset}px)`;
+    const wrapperSizes = this.wrapper[0]
+      .querySelector('.js-s3d__wrapper__canvas')
+      .getBoundingClientRect();
+    const xOffset = gsap.utils.mapRange(
+      0,
+      wrapperSizes.width,
+      this.PARALAX_AMOUNT,
+      this.PARALAX_AMOUNT * -1,
+      e.clientX,
+    );
+    const yOffset = gsap.utils.mapRange(
+      0,
+      wrapperSizes.height,
+      this.PARALAX_AMOUNT,
+      this.PARALAX_AMOUNT * -1,
+      e.clientY,
+    );
+    this.wrapper[0].querySelector(
+      '.js-s3d__wrapper__canvas',
+    ).style.transform = `scale(1.05) translate(${xOffset}px, ${yOffset}px)`;
   }
 
   cloudsEffect() {
-    this
-      .wrapper[0]
-      .insertAdjacentHTML(
-        'beforeend', 
-        `<div class="s3d__clouds">
+    this.wrapper[0].insertAdjacentHTML(
+      'beforeend',
+      `<div class="s3d__clouds">
           <img src="${window.defaultModulePath}/images/black-clouds-png-4.png"/>
-        </div>`
-      );
+        </div>`,
+    );
   }
 
-  loadVideoKeyframes() {    
+  loadVideoKeyframes() {
     Object.entries(this.video_keyframes).forEach(el => {
-      const [ keyframe, url ] = el;
+      const [keyframe, url] = el;
       const video = document.createElement('video');
-      video.src = isFullUrl(url) ? url :  window.defaultProjectPath + url;
+      video.src = isFullUrl(url) ? url : window.defaultProjectPath + url;
       video.loop = true;
       video.addEventListener('loadeddata', () => {
         this.videoKeyframesToRender[keyframe] = video;
@@ -1267,7 +1321,6 @@ async uploadPictures(hd) {
       });
       video.load();
     });
-    
   }
   playVideoKeyframe() {
     if (this.videoKeyframesToRender[this.activeElem]) {
@@ -1287,7 +1340,7 @@ async uploadPictures(hd) {
 
   drawSingleFrame(number) {
     this.ctx.clearRect(0, 0, this.width, this.height);
-    
+
     if (this.wrapperSvg) {
       this.wrapperSvg.setAttribute('src', this.arrayBase64Images[this.activeElem]);
     }
@@ -1299,18 +1352,17 @@ async uploadPictures(hd) {
   changeFramesOnSwipe() {
     this.swipeHammer = new Hammer(this.wrapper[0], {});
     this.wrapper[0].style.overflow = 'hidden';
-    
+
     this.swipeHammer.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
     const directions = {
       4: 'next',
       2: 'prev',
-    }
-    this.swipeHammer.on('swipe', (event) => {
+    };
+    this.swipeHammer.on('swipe', event => {
       if (this.isRotating$.value) return;
       if (directions[event.direction]) this.checkDirectionRotate(directions[event.direction]);
-    })
+    });
   }
-
 }
 
 export default SliderModel;
