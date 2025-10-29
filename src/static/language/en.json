@@ -345,7 +345,8 @@
       "contactButton": "CONTACT US TODAY"
     },
     "virtual_tour_open": "Explore tour",
-    "virtual_tour_close": "Pause"
+    "virtual_tour_close": "Pause",
+    "floorPlanLarge": "general floor plan"
   },
   "Floor": {
     "title-1": "",

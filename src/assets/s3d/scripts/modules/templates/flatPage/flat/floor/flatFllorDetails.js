@@ -11,7 +11,7 @@ export default function s3dFlatFloorDetails(
   flybyLists,
   labelsToShowInInfoBlock = [],
 ) {
-  const { build, floor, number, type, sale, rooms, area, _price, price_m2 } = flat;
+  const { build, floor, number, type, sale, rooms, area, _price, price_m2, sec_name } = flat;
 
   const buildContent =
     build && build != 0

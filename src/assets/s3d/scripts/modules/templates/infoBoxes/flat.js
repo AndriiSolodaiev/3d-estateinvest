@@ -111,6 +111,7 @@ function Flat(i18n, data) {
         ${$priceBlock}
         <div class="s3d-infoBox__info">
           <div class="s3d-infoBox__flat__wrapper-label">
+            
             ${$bottomLabels}
           </div>
           <!--<div class="s3d-infoBox__flat__block">

@@ -46,11 +46,11 @@
   },
   "title": {
     "genplan": "Генплан",
-    "flyby_1_outside": "Дом 1",
+    "flyby_1_outside": "Секция А",
     "flyby_1_inside": "Внутри Дома 1",
-    "flyby_2_outside": "Дом 2",
+    "flyby_2_outside": "Секции B, C, D",
     "flyby_2_inside": "Внутри Дома 2",
-    "flyby_3_outside": "Дом 3",
+    "flyby_3_outside": "Секции E,F",
     "flyby_3_inside": "Внутри Дома 3",
     "favourites": "Избранное",
     "plannings": "Планировки"
@@ -90,16 +90,16 @@
       "title": "Меню 3D",
       "genplan": "Генплан",
       "navigation": "Навигация",
-      "tooltip_1": "Дом 1",
-      "tooltip_2": "Дом 2",
-      "tooltip_3": "Дом 3",
+      "tooltip_1": "Секция А",
+      "tooltip_2": "Секции B, C, D",
+      "tooltip_3": "Секции E,F",
       "tooltip_4": "Дом 4",
       "flyby": "Дома",
-      "flyby_1_outside": "Дом 1",
+      "flyby_1_outside": "Секция А",
       "flyby_1_inside": "Дом 1 внутри",
-      "flyby_2_outside": "Дом 2",
+      "flyby_2_outside": "Секции B, C, D",
       "flyby_2_inside": "Дом 2 внутри",
-      "flyby_3_outside": "Дом 3",
+      "flyby_3_outside": "Секции E,F",
       "flyby_3_inside": "Дом 3 внутри",
       "flyby_4_outside": "Дом 4",
       "flyby_4_inside": "Дом 4 внутри",
@@ -353,7 +353,8 @@
       "contactButton": "СВЯЖИТЕСЬ С НАМИ СЕГОДНЯ"
     },
     "virtual_tour_open": "Изучить тур",
-    "virtual_tour_close": "Пауза"
+    "virtual_tour_close": "Пауза",
+    "floorPlanLarge": "общий план"
   },
   "Floor": {
     "title-1": "",

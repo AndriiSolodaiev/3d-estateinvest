@@ -145,6 +145,11 @@
         "label": "Flat.information.build"
       },
       {
+        "key": "sec_name",
+        "postfix_key": "",
+        "label": "Flat.information.section"
+      },
+      {
         "key": "floor",
         "postfix_key": "",
         "label": "Flat.information.floor"
@@ -193,6 +198,11 @@
     "id": "plannings",
     "generalWrapId": ".js-s3d__slideModule",
     "card_bottom_labels": [
+      {
+        "key": "sec_name",
+        "postfix_key": "",
+        "label": "Flat.information.section"
+      },
       {
         "key": "build",
         "postfix_key": "",

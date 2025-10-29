@@ -17,6 +17,7 @@ import ButtonIconLeft from '../../../../../s3d2/scripts/templates/common/ButtonI
 import { TOOLTIP_ATTRIBUTE } from '../../../../../s3d2/scripts/constants';
 import $s3dVillaNavigation from './villa/villaNavigation';
 import s3dFlatFloor from './flat/floor/flatFloor';
+import floorPlanLarge from './flat/floor/flatFloorLarge';
 import renderVillaContact, { initializeVillaContact } from './villa/contactUs/villaContactUs';
 import VillaGalleryScreen from './villa/gallery/villaGalleryMarkup';
 import VirtualTour from './villa/virtualTour/virtualTour';
@@ -103,6 +104,7 @@ function Flat(
     <div class="s3d-villa__container">
       ${s3dFlatFloor(i18n, flat, isChecked, flybyLists, labelsToShowInInfoBlock)}
       ${s3dFloorPlan(i18n, flat, floorList)}
+      ${floorPlanLarge(flat, i18n)}
       
       ${flat['gallery'] ? VillaGalleryScreen(flat['gallery'], i18n) : ''}
       ${
