@@ -387,11 +387,12 @@
   },
   "manager_info": {
     "tel": "062 199 999",
+    "tel2": "068 494 999",
     "name": {
-      "en": "COLINA VERDE",
-      "uk": "COLINA VERDE",
-      "ro": "COLINA VERDE",
-      "ru": "COLINA VERDE"
+      "en": "ESTATE INVEST",
+      "uk": "ESTATE INVEST",
+      "ro": "ESTATE INVEST",
+      "ru": "ESTATE INVEST"
     },
     "img": "/wp-content/themes/3d/assets/s3d/images/icon/developer.svg",
     "position": {
@@ -401,28 +402,27 @@
       "uk": "МЕНЕДЖЕР З ПРОДАЖУ"
     },
     "socials": {
-      "telegram": "https://t.me/ColinaVerde",
-      "whatsapp": "https://wa.me/qr/BJJCML76SS5DP1",
-      "instagram": "https://www.instagram.com/colina_verde_residence?igsh=aGV0enZ2eW96anR2"
+      "telegram": "https://t.me/marcel_estate",
+      "whatsapp": "https://wa.me/+37368494999"
     }
   },
   "g_contacts": {
     "email": "estateinvestmarketing@gmail.com",
     "construction_department": {
       "text": {
-        "en": "Moldova , Bucovina 3/1",
-        "uk": "Moldova , Bucovina 3/1",
-        "ro": "Republica Moldova, Bucovina 3/1",
-        "ru": "Республика Молдова, Bucovina 3/1"
+        "en": "Chișinău , Bucovina 3/1",
+        "uk": "Chișinău , Bucovina 3/1",
+        "ro": "Chișinău, Bucovina 3/1",
+        "ru": "Кишинев, Bucovina 3/1"
       },
       "google_maps_link": "https://maps.app.goo.gl/8HiFNmwSVxJym2Wt9"
     },
     "sales_department": {
       "text": {
-        "en": "Moldova , Bucovina 3/1",
-        "uk": "Moldova , Bucovina 3/1",
-        "ro": "Republica Moldova, Bucovina 3/1",
-        "ru": "Республика Молдова, Bucovina 3/1"
+        "en": "Chișinău , Bucovina 3/1",
+        "uk": "Chișinău , Bucovina 3/1",
+        "ro": "Chișinău, Bucovina 3/1",
+        "ru": "Кишинев, Bucovina 3/1"
       },
       "google_maps_link": "https://maps.app.goo.gl/8HiFNmwSVxJym2Wt9"
     }

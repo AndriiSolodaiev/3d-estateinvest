@@ -82,13 +82,20 @@ export default function renderVillaContact(i18n, managerInfo = {}, contactAdvant
             )}" class="s3d-villa__contact__manager__phone">
               ${get(managerInfo, ['tel'], '')}
             </a>
+            <a href="tel:${get(
+              managerInfo,
+              ['tel2'],
+              '',
+            )}" class="s3d-villa__contact__manager__phone">
+              ${get(managerInfo, ['tel2'], '')}
+            </a>
             <div class="s3d-villa__contact__manager__socials">
               ${$managerContacts}
             </div>
 
           </div>
         </div>
-        <div class="s3d-villa__contact__content__column">
+        <!-- <div class="s3d-villa__contact__content__column">
           <div class="s3d-villa__contact__advantages">
             <div class="s3d-villa__contact__advantages__title">
               ${i18n.t('Flat.contactUs.ourAdvantages')}
@@ -103,7 +110,7 @@ export default function renderVillaContact(i18n, managerInfo = {}, contactAdvant
                 <span>${i18n.t('Flat.contactUs.contactButton')}</span>
               </button>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   `;
