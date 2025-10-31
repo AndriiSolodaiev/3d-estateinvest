@@ -18,7 +18,6 @@ import Hammer from 'hammerjs';
 import { isMobile } from '../helpers/helpers';
 import { SEARCH_PARAMS_FILTER_PREFIX } from '../../../../s3d2/scripts/constants';
 import Toastify from 'toastify-js';
-import IMask from 'imask';
 
 class FilterModel extends EventEmitter {
   constructor(config) {
@@ -41,12 +40,6 @@ class FilterModel extends EventEmitter {
       ...rangesDataFromSettings,
       ...checkboxesDataFromSettings,
     };
-
-    this.rangesConfig = config.config.ranges.reduce((acc, el) => {
-      acc[el.name] = el;
-      return acc;
-    }, {});
-
     this.configProject = {};
     this.currentFilteredFlatIds$ = config.currentFilteredFlatIds$;
     this.currentFilteredFlatIdsAviableStatus$ = config.currentFilteredFlatIdsAviableStatus$;
@@ -71,33 +64,33 @@ class FilterModel extends EventEmitter {
 
     this.show_prices = config.show_prices;
 
-    this.currentPage$.subscribe((page) => {
+    this.currentPage$.subscribe(page => {
       const wrapperParentElement = {
-        plannings: '[data-plannings-filter-container]'
+        plannings: '[data-plannings-filter-container]',
       };
 
-      const whereToAppendElementSelector = get(wrapperParentElement, page.type, '.js-s3d__slideModule');
+      const whereToAppendElementSelector = get(
+        wrapperParentElement,
+        page.type,
+        '.js-s3d__slideModule',
+      );
 
       const wrapperParentElementDOM = document.querySelector(whereToAppendElementSelector);
-      this.$wrapper.classList.add('hidden-when-change-parent')
-      
-      wrapperParentElementDOM.appendChild(this.$wrapper);      
+      this.$wrapper.classList.add('hidden-when-change-parent');
+
+      wrapperParentElementDOM.appendChild(this.$wrapper);
       setTimeout(() => {
         this.$wrapper.classList.remove('hidden-when-change-parent');
       }, 1000);
-    });   
+    });
 
     const el = document.querySelector('.s3d-filter-wrap .s3d-filter__view-type-wrapper');
-    document.querySelector('.s3d-filter-wrap').addEventListener("scroll", () => {
-      
+    document.querySelector('.s3d-filter-wrap').addEventListener('scroll', () => {
       const stickyTop = parseInt(window.getComputedStyle(el).top);
       const currentTop = el.getBoundingClientRect().top;
-      el.classList.toggle("is-sticky", currentTop === stickyTop);
+      el.classList.toggle('is-sticky', currentTop === stickyTop);
     });
     this.changeResultsViewType(this.viewType);
-    this.card_bottom_labels = config.card_bottom_labels || [];
-
-
   }
 
   changeResultsViewType(value) {
@@ -128,9 +121,8 @@ class FilterModel extends EventEmitter {
       });
     }
 
-
-    this.isFilterEmpty.subscribe((value) => {
-      document.querySelectorAll('.js-s3d-ctr__filter').forEach((el) => {
+    this.isFilterEmpty.subscribe(value => {
+      document.querySelectorAll('.js-s3d-ctr__filter').forEach(el => {
         if (!value) {
           el.setAttribute('data-filter-not-empty', 'true');
         } else {
@@ -240,7 +232,7 @@ class FilterModel extends EventEmitter {
     this.updateAllParamFilter(filterSettings);
     const { flats, floors } = this.startFilter(this.flats, filterSettings);
     const aviableStatusFlats = flats.filter(el => {
-      return this.flats[el].sale == 1
+      return this.flats[el].sale == 1;
     });
     this.emit('setAmountSelectFlat', aviableStatusFlats.length);
     this.currentFilteredFlatIds$.next(flats);
@@ -271,9 +263,9 @@ class FilterModel extends EventEmitter {
         case 'option':
           param = this.createParam(flats, type, this.createOptionParam);
           break;
-        case 'text':
-          param = this.createParam(flats, type, this.createTextParam);
-          break;
+        // case 'text':
+        //   param = this.createParam(flats, type, this.createTextParam);
+        //   break;
         default:
           param = {};
           break;
@@ -353,12 +345,16 @@ class FilterModel extends EventEmitter {
       const { min, max } = config;
       const $min = $(`.js-filter-range [data-type=${config.type}][data-border="min"]`);
       const $max = $(`.js-filter-range [data-type=${config.type}][data-border="max"]`);
-      const rangeSlider = $(`.js-filter-range .js-s3d-filter__${config.type}--input[data-type=${config.type}]`);
+      const rangeSlider = $(
+        `.js-filter-range .js-s3d-filter__${config.type}--input[data-type=${config.type}]`,
+      );
 
       const searchParams = this.history.parseSearchUrl(window.location);
 
-      const initialMin = toNumber(searchParams[`${SEARCH_PARAMS_FILTER_PREFIX}${config.type}_min`]) || min;
-      const initialMax = toNumber(searchParams[`${SEARCH_PARAMS_FILTER_PREFIX}${config.type}_max`]) || max;
+      const initialMin =
+        toNumber(searchParams[`${SEARCH_PARAMS_FILTER_PREFIX}${config.type}_min`]) || min;
+      const initialMax =
+        toNumber(searchParams[`${SEARCH_PARAMS_FILTER_PREFIX}${config.type}_max`]) || max;
 
       rangeSlider.ionRangeSlider({
         type: 'double',
@@ -386,34 +382,9 @@ class FilterModel extends EventEmitter {
         to: initialMax,
       });
 
-
-      if (this.rangesConfig[config.type].delimit_thousands) {
-        $min[0].imask = IMask(
-          $min[0],
-          {
-            mask: Number,
-            min: -100000000,
-            max: 100000000,
-            scale: 2,
-            radix: '.',
-            thousandsSeparator: ' '
-          }
-        )
-        $max[0].imask = IMask(
-          $max[0],
-          {
-            mask: Number,
-            min: -100000000,
-            max: 100000000,
-            scale: 2,
-            radix: '.',
-            thousandsSeparator: ' '
-          }
-        )
-      }
-      function updateInputs(data) {        
-        $min.prop('value', data.from_pretty);
-        $max.prop('value', data.to_pretty);
+      function updateInputs(data) {
+        $min.prop('value', data.from);
+        $max.prop('value', data.to);
       }
 
       $min.on('change', function() {
@@ -421,26 +392,10 @@ class FilterModel extends EventEmitter {
       });
       $max.on('change', function() {
         changeInput.call(this, 'to');
-      }); 
-      
-      $min.on('input', function() {
-        let val = $(this).prop('value');
-        const el = $(this);
-        val = val.replace(/[^0-9.,]/g, '');
-        val = val.replace(/,/g, '.');
-        el.prop('value', val);
-      });
-      $max.on('input', function() {
-        let val = $(this).prop('value');
-        const el = $(this);
-        val = val.replace(/[^0-9.,]/g, '');
-        val = val.replace(/,/g, '.');
-        el.prop('value', val);
       });
 
       function changeInput(key) {
         let val = $(this).prop('value');
-        val = +val.replace(/\s/g, '');
         if (key === 'from') {
           if (val < min) val = min;
           else if (val > instance.result.to) val = instance.result.to;
@@ -631,9 +586,11 @@ class FilterModel extends EventEmitter {
         case 'text':
           return value.value !== '';
         case 'range':
-
-        const rangeInstance = filterConfig[name].elem;
-          return rangeInstance.result.min !== rangeInstance.result.from || rangeInstance.result.max !== rangeInstance.result.to;
+          const rangeInstance = filterConfig[name].elem;
+          return (
+            rangeInstance.result.min !== rangeInstance.result.from ||
+            rangeInstance.result.max !== rangeInstance.result.to
+          );
         case 'checkbox':
           return value.value.length !== 0;
         case 'option':
@@ -656,7 +613,9 @@ class FilterModel extends EventEmitter {
   }
 
   checkСheckboxParam(flat, key, value) {
-    return value.value.reduce((acc, name) => acc || flat[key] == name, false) || size(value.value) === 0;
+    return (
+      value.value.reduce((acc, name) => acc || flat[key] == name, false) || size(value.value) === 0
+    );
   }
 
   checkOptionParam(flat, key, value) {

@@ -1,26 +1,41 @@
-import get from "lodash/get";
-import { socialMediaIcons } from "../../../../../../../s3d2/scripts/templates/common/icons/social-media-icons";
+import get from 'lodash/get';
+import { socialMediaIcons } from '../../../../../../../s3d2/scripts/templates/common/icons/social-media-icons';
 
-export default function VillaContactLocation(i18n, socialMediaLinks = {}, contacts = {}, globalPhoneNumber = '', project_google_map_location) {
+export default function VillaContactLocation(
+  i18n,
+  socialMediaLinks = {},
+  contacts = {},
+  globalPhoneNumber = '',
+  project_google_map_location,
+) {
   const lang = i18n.language;
-  const $socialMediaList = Object.entries(socialMediaLinks).map(([name, url]) => {
-    if (!url) return '';
-    return `
+  const $socialMediaList = Object.entries(socialMediaLinks)
+    .map(([name, url]) => {
+      if (!url) return '';
+      return `
       <a href="${url}" class="s3d-villa__contact-location-intro-item__social-item" target="_blank">
           ${socialMediaIcons[name]}
       </a>
     `;
-  }).join('');
+    })
+    .join('');
 
-  const $salesDepartment = get(contacts, 'sales_department') ? `
+  const $salesDepartment = get(contacts, 'sales_department')
+    ? `
     <div class="s3d-villa__contact-location-intro-item__department-wrap">
         <span class="s3d-villa__contact-location-intro-item__title">${i18n.t(
           'Flat.contactUs.departmentTitle.1',
         )}</span>
-        <a href="${get(contacts, 'sales_department.google_maps_link')}" target='_blank' class="s3d-villa__contact-location-intro-item__title s3d-villa__contact-location-intro-item__title--black">
-        ${get(contacts, ['sales_department','text', lang], contacts.sales_department.text.en)}
+        <a href="${get(
+          contacts,
+          'sales_department.google_maps_link',
+        )}" target='_blank' class="s3d-villa__contact-location-intro-item__title s3d-villa__contact-location-intro-item__title--black">
+        ${get(contacts, ['sales_department', 'text', lang], contacts.sales_department.text.en)}
         </a>
-        <a href="${get(contacts, 'sales_department.google_maps_link')}" target='_blank' class="s3d-villa__contact-location-intro-item__department-btn ButtonIconLeft active ButtonIconLeft--secondary">
+        <a href="${get(
+          contacts,
+          'sales_department.google_maps_link',
+        )}" target='_blank' class="s3d-villa__contact-location-intro-item__department-btn ButtonIconLeft active ButtonIconLeft--secondary">
             <svg class="ButtonIconLeft__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.0903 8.83019C17.0903 5.66038 14.6992 4 11.9995 4C9.29975 4 6.90851 5.66038 6.90851 8.83019C6.90851 9.49434 7.26847 10.4654 7.44845 10.8679L11.9995 20L16.5504 10.8679C16.7304 10.4654 17.0903 9.49434 17.0903 8.83019ZM11.9994 12C13.6061 12 14.9085 10.6976 14.9085 9.09092C14.9085 7.48427 13.6061 6.18183 11.9994 6.18183C10.3928 6.18183 9.09033 7.48427 9.09033 9.09092C9.09033 10.6976 10.3928 12 11.9994 12Z" fill="#FAFBFE"/>
             </svg>
@@ -28,16 +43,28 @@ export default function VillaContactLocation(i18n, socialMediaLinks = {}, contac
         </a>
     </div>
   
-  ` : '';
-  const $constructionDepartment = get(contacts, 'construction_department') ? `
+  `
+    : '';
+  const $constructionDepartment = get(contacts, 'construction_department')
+    ? `
     <div class="s3d-villa__contact-location-intro-item__department-wrap">
         <span class="s3d-villa__contact-location-intro-item__title">${i18n.t(
           'Flat.contactUs.departmentTitle.2',
         )}</span>
-        <a href="${get(contacts, 'construction_department.google_maps_link')}" target='_blank' class="s3d-villa__contact-location-intro-item__title s3d-villa__contact-location-intro-item__title--black">
-        ${get(contacts, ['construction_department','text', lang], contacts.construction_department.text.en)}
+        <a href="${get(
+          contacts,
+          'construction_department.google_maps_link',
+        )}" target='_blank' class="s3d-villa__contact-location-intro-item__title s3d-villa__contact-location-intro-item__title--black">
+        ${get(
+          contacts,
+          ['construction_department', 'text', lang],
+          contacts.construction_department.text.en,
+        )}
         </a>
-        <a href="${get(contacts, 'construction_department.google_maps_link')}" target='_blank' class="s3d-villa__contact-location-intro-item__department-btn ButtonIconLeft active ButtonIconLeft--secondary">
+        <a href="${get(
+          contacts,
+          'construction_department.google_maps_link',
+        )}" target='_blank' class="s3d-villa__contact-location-intro-item__department-btn ButtonIconLeft active ButtonIconLeft--secondary">
             <svg class="ButtonIconLeft__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.0903 8.83019C17.0903 5.66038 14.6992 4 11.9995 4C9.29975 4 6.90851 5.66038 6.90851 8.83019C6.90851 9.49434 7.26847 10.4654 7.44845 10.8679L11.9995 20L16.5504 10.8679C16.7304 10.4654 17.0903 9.49434 17.0903 8.83019ZM11.9994 12C13.6061 12 14.9085 10.6976 14.9085 9.09092C14.9085 7.48427 13.6061 6.18183 11.9994 6.18183C10.3928 6.18183 9.09033 7.48427 9.09033 9.09092C9.09033 10.6976 10.3928 12 11.9994 12Z" fill="#FAFBFE"/>
             </svg>
@@ -45,15 +72,17 @@ export default function VillaContactLocation(i18n, socialMediaLinks = {}, contac
         </a>
     </div>
 
-  ` : '';
+  `
+    : '';
 
-  const $globalPhoneNumber = globalPhoneNumber ? `
+  const $globalPhoneNumber = globalPhoneNumber
+    ? `
         <span class="s3d-villa__contact-location-intro-item__title">${i18n.t(
           'Flat.contactUs.phone',
         )}</span>
         <a href="tel:${globalPhoneNumber}" class="s3d-villa__contact-location-intro-item__value">${globalPhoneNumber}</a>
-  ` : '';
-
+  `
+    : '';
 
   return `
     <div class="s3d-villa__contact-location">
@@ -111,12 +140,22 @@ export default function VillaContactLocation(i18n, socialMediaLinks = {}, contac
                                 </div>
                             </div>
                         <div class="s3d-villa__contact-location-intro-item__inner-wrap">
-                            ${get(contacts, 'email') ? `
+                            ${
+                              get(contacts, 'email')
+                                ? `
                               <span class="s3d-villa__contact-location-intro-item__title">${i18n.t(
                                 'Flat.contactUs.email',
                               )}</span>
-                              <a href="mailTo:${get(contacts, 'email')}" class="s3d-villa__contact-location-intro-item__value">${get(contacts, 'email')}</a>
-                              ` : ``}
+                              <a href="mailTo:${get(
+                                contacts,
+                                'email',
+                              )}" class="s3d-villa__contact-location-intro-item__value">${get(
+                                    contacts,
+                                    'email',
+                                  )}</a>
+                              `
+                                : ``
+                            }
                         </div>
                         
                         ${$salesDepartment}
@@ -167,9 +206,14 @@ export default function VillaContactLocation(i18n, socialMediaLinks = {}, contac
                     </div>
                 </div>
                 <div class="s3d-villa__contact-location-map">
-                    ${project_google_map_location ? `
+                
+                    ${
+                      project_google_map_location
+                        ? `
                       <iframe src="${project_google_map_location}"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    ` : ''}
+                    `
+                        : ''
+                    }
                 </div>
             </div>
     </div>

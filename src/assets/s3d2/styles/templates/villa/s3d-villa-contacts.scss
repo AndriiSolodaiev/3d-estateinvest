@@ -3,14 +3,14 @@
   flex-direction: column;
   background: url('/wp-content/themes/3d/assets/s3d/images/background-inside.jpg');
   gap: var(--space-16);
-  padding: var(--space-40) var(--space-10) 0 var(--space-10);
+  padding: 0 var(--space-10) 0 var(--space-10);
   width: 100%;
   @media screen and (max-width: 1920px) {
-    padding: var(--space-32) var(--space-6) 0 var(--space-6);
+    padding: 0 var(--space-6) 0 var(--space-6);
     gap: var(--space-12);
   }
   @media screen and (max-width: 768px) {
-    padding: var(--space-20) var(--space-5) 0 var(--space-5);
+    padding: 0 var(--space-5) 0 var(--space-5);
     gap: var(--space-10);
   }
 
@@ -20,7 +20,7 @@
     overflow: hidden;
     border-bottom-right-radius: var(--border-space-32);
     border-bottom-left-radius: var(--border-space-32);
-    padding: var(--space-40) 0;
+    padding: var(--space-40) 0 0 0;
 
     @media screen and (max-width: 1920px) {
       // padding: var(--space-32) 0;
@@ -29,7 +29,7 @@
     @media screen and (max-width: 768px) {
       border-bottom-right-radius: var(--space-12);
       border-bottom-left-radius: var(--space-12);
-      padding: var(--space-20) 0;
+      padding: var(--space-20) 0 0 0;
     }
   }
 
@@ -539,6 +539,8 @@
             border-radius: var(--border-space-32);
             padding: var(--space-5) var(--space-8);
             gap: var(--space-3);
+            width: fit-content;
+            white-space: nowrap;
             svg path {
               fill: var(--text-gray-200);
             }

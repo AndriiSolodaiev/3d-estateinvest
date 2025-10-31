@@ -239,10 +239,10 @@
         "type": "range"
       },
       {
-        "title_i18n": "Filter.laist.price",
+        "title_i18n": "Filter.list.price",
         "title_postfix_i18n": false,
         "title_prefix_i18n": false,
-        "name": "price",
+        "name": "_price",
         "type": "range"
       },
       {

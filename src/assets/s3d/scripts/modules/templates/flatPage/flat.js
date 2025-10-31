@@ -73,7 +73,15 @@ function Flat(
   faq_questions = [],
   card_bottom_labels = [],
 ) {
-  const contactFormHtml2 = renderVillaContact(i18n, managerInfo, contactAdvantagesList);
+  const contactFormHtml2 = renderVillaContact(
+    i18n,
+    managerInfo,
+    contactAdvantagesList,
+    socialMediaLinks,
+    contacts,
+    globalPhoneNumber,
+    project_google_map_location,
+  );
 
   const contactFormContainerId2 = extractContainerId(contactFormHtml2);
 
@@ -153,13 +161,6 @@ function Flat(
       ${FlatDocumentationScreen(i18n, projectDocs)}
       ${FlatConstructionProgressScreen(i18n, constructionProgressDataList)}
       <div class="s3d-villa__contact-screen">
-        ${VillaContactLocation(
-          i18n,
-          socialMediaLinks,
-          contacts,
-          globalPhoneNumber,
-          project_google_map_location,
-        )}
        
         ${contactFormHtml2}
       </div>
