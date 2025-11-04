@@ -236,7 +236,7 @@ function renderFlatFlyby(link, flatId, flat, getFlat) {
     svg.querySelectorAll(`polygon[data-type="flat"]`).forEach(el => {
       el.classList.add('polygon__filter-select');
       console.log('getFlat(el.dataset.id)', el.dataset.id);
-      // el.dataset['_type'] = getFlat(el.dataset.id)['build'];
+      el.dataset['_type'] = getFlat(el.dataset.id)['build'];
     });
     svg.querySelectorAll(`polygon[data-_type="${flat.build}"]`).forEach(el => {
       el.classList.add('active');
