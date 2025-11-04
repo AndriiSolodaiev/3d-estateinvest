@@ -271,6 +271,7 @@ class SliderView extends EventEmitter {
 
       const minPrice = this._model.g_getFlybyMinPrice(flyby, side);
       const minPriceM2 = this._model.g_getFlybyMinPriceM2(flyby, side);
+      console.log('minPrice', minPrice);
 
       document
         .querySelectorAll(

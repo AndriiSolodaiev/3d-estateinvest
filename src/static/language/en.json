@@ -26,7 +26,7 @@
     "flatClosed": "Sales are not open",
     "freeObjects": "Available",
     "price_m2_from": "Price per $t(area_unit):",
-    "from_price": "from {{currency}} {{text}}",
+    "from_price": "from € {{text}}",
     "price_from": "Price:",
     "reviewFlat": "Explore property",
     "buildReview": "View house",

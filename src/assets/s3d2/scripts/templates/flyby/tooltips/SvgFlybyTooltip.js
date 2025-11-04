@@ -40,7 +40,7 @@ export default function SvgFlybyTooltip({
     : '';
 
   return `
-    <foreignObject class="s3d2-svg-flyby-tooltip"  x="${x}" y="${y}"  width="250" height="160" data-build-flat-count-element data-id="${id}">
+    <foreignObject class="s3d2-svg-flyby-tooltip"  x="${x}" y="${y}"  width="290" height="160" data-build-flat-count-element data-id="${id}">
       <div xmlns="http://www.w3.org/1999/xhtml" class="SvgFlybyTooltip">
 
           <div class="SvgFlybyTooltip__title">${title}</div>

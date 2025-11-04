@@ -501,7 +501,7 @@
           width: max-content;
           @include text-style-3-d-fonts-1920-h-1();
           color: var(--color-gray-900);
-          text-transform: uppercase;
+          text-transform: none;
           text-decoration: none;
           font-size: 20px;
           @media screen and (max-width: 1366px) {

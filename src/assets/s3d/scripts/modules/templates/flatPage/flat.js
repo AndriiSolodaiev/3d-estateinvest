@@ -235,12 +235,13 @@ function renderFlatFlyby(link, flatId, flat, getFlat) {
     svg.querySelectorAll(`polygon`).forEach(el => el.setAttribute('fill', 'none'));
     svg.querySelectorAll(`polygon[data-type="flat"]`).forEach(el => {
       el.classList.add('polygon__filter-select');
-      el.dataset['_type'] = getFlat(el.dataset.id)['build_name'];
+      console.log('getFlat(el.dataset.id)', el.dataset.id);
+      // el.dataset['_type'] = getFlat(el.dataset.id)['build'];
     });
-    svg.querySelectorAll(`polygon[data-_type="${flat.build_name}"]`).forEach(el => {
+    svg.querySelectorAll(`polygon[data-_type="${flat.build}"]`).forEach(el => {
       el.classList.add('active');
-      const sale = getFlat(el.dataset.id).sale;
-      el.dataset['sale'] = sale;
+      // const sale = getFlat(el.dataset.id).sale;
+      // el.dataset['sale'] = sale;
       // el.classList.remove('polygon__filter-select');
     });
 

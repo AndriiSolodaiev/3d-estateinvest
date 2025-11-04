@@ -519,7 +519,7 @@ class AppModel extends EventEmitter {
       },
       typeSelectedFlyby$: this.typeSelectedFlyby$,
       i18n: this.i18n,
-      flat_card_bottom_labels: bottomLabels
+      flat_card_bottom_labels: bottomLabels,
     });
     const flats = await this.requestGetFlats();
     await this.asyncGetDocumentation();
@@ -1547,7 +1547,7 @@ class AppModel extends EventEmitter {
       if (flat.sale != 1) return;
       if (
         !flybyAndBuildNamesMap[key] ||
-        flybyAndBuildNamesMap[key].includes(flat.build.toString()) === false
+        flybyAndBuildNamesMap[key].includes(flat.section.toString()) === false
       )
         return;
       if (!this.flybyMinPriceCache[key]) {
@@ -1569,6 +1569,7 @@ class AppModel extends EventEmitter {
   getFlybyMinPriceM2(flyby, side) {
     const key = `${flyby}-${side}`;
     const flybyAndBuildNamesMap = get(this, ['config', 'assotiated_flat_builds_with_flybys'], {});
+    console.log('flybyAndBuildNamesMap', flybyAndBuildNamesMap);
 
     if (!this.flybyMinPriceM2Cache) {
       this.flybyMinPriceM2Cache = {};
@@ -1583,7 +1584,7 @@ class AppModel extends EventEmitter {
       if (flat.sale != 1) return;
       if (
         !flybyAndBuildNamesMap[key] ||
-        flybyAndBuildNamesMap[key].includes(flat.build.toString()) === false
+        flybyAndBuildNamesMap[key].includes(flat.section.toString()) === false
       )
         return;
       if (!this.flybyMinPriceM2Cache[key]) {

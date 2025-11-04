@@ -87,7 +87,7 @@ export default function s3dVillaFloorPlanings(i18n, flat) {
                             ${flat.area} ${i18n.t('area_unit')}
                         </div>
                     </div>
-                    <div class="s3d-villa__floor-explication-screen-info-row  ">
+                    <!-- <div class="s3d-villa__floor-explication-screen-info-row  ">
                         <div class="s3d-villa__floor-explication-screen-info-row-title">
                             ${i18n.t('Flat.information.life_area')}:
                         </div>
@@ -96,7 +96,7 @@ export default function s3dVillaFloorPlanings(i18n, flat) {
                         <div class="s3d-villa__floor-explication-screen-info-row-value">
                             ${flat.life_room} ${i18n.t('area_unit')}
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="s3d-villa__floor-explication-screen-info" data-villa-explication-floor-properties-container>
                     <div class="s3d-villa__floor-explication-screen-info-row">
