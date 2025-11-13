@@ -3,7 +3,7 @@ import $floorFilter from './$floorFilter';
 import $floorNav from './$floorNav';
 import IconButton from '../../../../../s3d2/scripts/templates/common/IconButton';
 import get from 'lodash/get';
-import { $highlightSvgElements } from '../controller/$highlightSvgElements';
+import { $highlightSvgElementsFloor } from '../controller/$highlightSvgElements';
 import CheckboxWithLabel from '../../../../../s3d2/scripts/templates/components/filter/CheckboxWithLabel';
 import Checkbox from '../../../../../s3d2/scripts/templates/components/filter/Checkbox';
 import { numberWithCommas } from '../../../../../s3d2/scripts/helpers/helpers_s3d2';
@@ -47,7 +47,7 @@ function Floor(i18n, floor, hideOverlay = false, showPrices) {
 
   const $hideOverlay = isMobile
     ? ''
-    : $highlightSvgElements(
+    : $highlightSvgElementsFloor(
         i18n,
         `data-highlight-floor-svg-elements ${hideOverlay ? 'checked' : ''}`,
         'highlight-floor-svg-elements',

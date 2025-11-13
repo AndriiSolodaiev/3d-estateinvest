@@ -164,7 +164,9 @@ function Card(
         <!-- ${$number(i18n, flat)} -->
       </div>
       <div class="s3d-card__middle">
-        <div>${rooms} ${i18n.t('Flat.information.rooms')}</div>
+        <div>${rooms} ${
+    rooms === 1 ? i18n.t('Flat.information.room') : i18n.t('Flat.information.rooms')
+  }</div>
         <div class="decorative-slash">/</div>
         <div>${area} ${i18n.t('Flat.information.area_unit')}</div>
         <!-- <div>${area} м²</div> -->

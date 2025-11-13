@@ -34,11 +34,6 @@ export default function $floorFilter(i18n) {
         value: 4,
         title: i18n.t('Floor.filter.4'),
       })}
-      ${CheckboxWithLabel({
-        name: 'rooms-5',
-        value: 4,
-        title: i18n.t('Floor.filter.5'),
-      })}
     
     </div>
   `;

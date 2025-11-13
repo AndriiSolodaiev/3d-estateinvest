@@ -260,7 +260,8 @@
       "priceHistory": "Price dynamic",
       "floor_n_desktop": "Floor number",
       "floor_n_mobile": "Floor №",
-      "viewPlanning": "View Planning"
+      "viewPlanning": "View Planning",
+      "room": "room"
     },
     "goToFloor": "Floor plan",
     "goToFlat": "Explore property",

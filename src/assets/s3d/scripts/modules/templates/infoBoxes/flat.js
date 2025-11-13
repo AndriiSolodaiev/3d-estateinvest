@@ -98,7 +98,9 @@ function Flat(i18n, data) {
         ${isDesktop() ? '' : $closeBtn()}
       </div>
       <div class="s3d-infoBox__flat__alert__middle">
-        <div>${rooms}  ${i18n.t('Flat.information.rooms')}</div>
+        <div>${rooms} ${
+    rooms === 1 ? i18n.t('Flat.information.room') : i18n.t('Flat.information.rooms')
+  }</div>
         <div class="decorative-slash">/</div>
         <div>${area} ${i18n.t('Flat.information.area_unit')}</div>
       </div>
