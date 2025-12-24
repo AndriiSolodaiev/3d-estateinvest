@@ -235,15 +235,35 @@ function renderFlatFlyby(link, flatId, flat, getFlat) {
     svg.querySelectorAll(`polygon`).forEach(el => el.setAttribute('fill', 'none'));
     svg.querySelectorAll(`polygon[data-type="flat"]`).forEach(el => {
       el.classList.add('polygon__filter-select');
-      console.log('getFlat(el.dataset.id)', el.dataset.id);
-      el.dataset['_type'] = getFlat(el.dataset.id)['build'];
+
+      const flatId = el.dataset.id;
+      const flat = getFlat(flatId);
+
+      if (flat) {
+        const sale = flat.sale;
+        el.dataset['_type'] = flat.build;
+        el.dataset['sale'] = sale;
+      } else {
+        console.warn(`⚠️ Квартира з ID ${flatId} не знайдена! `);
+        el.classList.remove('polygon__filter-select');
+        el.style.pointerEvents = 'none';
+      }
     });
-    svg.querySelectorAll(`polygon[data-_type="${flat.build}"]`).forEach(el => {
-      el.classList.add('active');
-      // const sale = getFlat(el.dataset.id).sale;
-      // el.dataset['sale'] = sale;
-      // el.classList.remove('polygon__filter-select');
-    });
+    // svg.querySelectorAll(`polygon[data-_type="${flat.build}"]`).forEach(el => {
+    //   el.classList.add('active');
+    //   const flatId = el.dataset.id;
+    //   const flat = getFlat(flatId);
+
+    //   const sale = flat.sale;
+    //   if (flat) {
+    //     console.warn(`⚠️ Квартира з ID ${el.dataset.id} не знайдена`);
+    //     el.dataset['sale'] = sale;
+    //     return;
+    //   } else {
+    //     el.classList.remove('polygon__filter-select');
+    //     el.style.pointerEvents = 'none';
+    //   }
+    // });
 
     svg.querySelectorAll(`[data-id="${flatId}"]`).forEach(el => el.classList.add('active-flat'));
     container.insertAdjacentElement('beforeend', svg);

@@ -24,6 +24,7 @@
     "sold_short": "Продано",
     "flatSold": "Квартира продана",
     "flatClosed": "Продажи не открыты",
+    "apartaments": "Квартир",
     "freeObjects": "В наличии",
     "price_m2_from": "Цена за $t(area_unit):",
     "from_price": "от € {{text}}",

@@ -27,7 +27,7 @@ function general(i18n, data) {
     ? `
   <div class="s3d-infoBox__block">
     <div class="s3d-infoBox__subtitle">${i18n.t(`infoBox.freeObjects`)}</div>
-    <div class="s3d-infoBox__title">${flatsCount}</div>
+    <div class="s3d-infoBox__title">${flatsCount} ${i18n.t(`infoBox.apartaments`)}</div>
   </div>`
     : '';
 

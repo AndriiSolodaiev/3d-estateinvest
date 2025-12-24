@@ -25,6 +25,7 @@
     "flatSold": "Apartament vândut",
     "flatClosed": "Vânzările nu sunt deschise",
     "freeObjects": "Disponibil",
+    "apartaments": "Apartamente",
     "price_m2_from": "Preț pe $t(area_unit):",
     "from_price": "de la € {{text}}",
     "price_from": "Preț:",
@@ -39,7 +40,7 @@
     "general": {
       "button_titles": {
         "queue": "Explorează Faza",
-        "villa": "Explorează vila",
+        "villa": "Explorează Blocul",
         "house": "Explorează casa"
       }
     }

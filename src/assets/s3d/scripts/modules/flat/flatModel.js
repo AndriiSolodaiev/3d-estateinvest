@@ -97,11 +97,7 @@ class FlatModel extends EventEmitter {
     });
     this.explicationState$.subscribe(state => {
       const type = state.type === '2d' ? 'without' : 'with';
-      const image = get(
-        this.getFlat(this.activeFlat),
-        `img_big`,
-        '',
-      );
+      const image = get(this.getFlat(this.activeFlat), `img_big`, '');
       this.emit('updateExplicationImage', image);
     });
     this.explicationState$.subscribe(state => {
@@ -239,12 +235,12 @@ class FlatModel extends EventEmitter {
     this.priceHistoryHandler();
 
     if (isMobile()) {
-      if (this.explicationZoom) {
-        this.explicationZoom.destroy();
-      }
-      this.explicationZoom = new PinchZoom(
-        document.querySelector('.s3d-flat__explication-screen-slider'),
-      );
+      // if (this.explicationZoom) {
+      //   this.explicationZoom.destroy();
+      // }
+      // this.explicationZoom = new PinchZoom(
+      //   document.querySelector('.s3d-flat__explication-screen-slider'),
+      // );
     }
 
     setTimeout(() => {
@@ -397,7 +393,7 @@ class FlatModel extends EventEmitter {
       this.g_contact_advantaged_list,
       this.project_google_map_location,
       this.faq_questions,
-      this.card_bottom_labels  
+      this.card_bottom_labels,
     );
 
     this.emit('setFlat', html);
@@ -857,14 +853,15 @@ class FlatModel extends EventEmitter {
         centeredSlides: true,
         spaceBetween: 8,
       });
-      setTimeout(()=> {
-      const elementToFindIndex = Array.from(this.floorListSliderInstance.slides).find((el, index) =>
-        el.classList.contains('active'),
-      );
-      if (elementToFindIndex) {
-        this.floorListSliderInstance.slideTo(elementToFindIndex.dataset.index);
-        console.log('floorListSliderInit', this.floorListSliderInstance);
-      }}, 1000)
+      setTimeout(() => {
+        const elementToFindIndex = Array.from(
+          this.floorListSliderInstance.slides,
+        ).find((el, index) => el.classList.contains('active'));
+        if (elementToFindIndex) {
+          this.floorListSliderInstance.slideTo(elementToFindIndex.dataset.index);
+          console.log('floorListSliderInit', this.floorListSliderInstance);
+        }
+      }, 1000);
     }
   }
 
