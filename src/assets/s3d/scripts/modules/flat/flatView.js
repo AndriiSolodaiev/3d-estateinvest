@@ -69,10 +69,60 @@ class FlatView extends EventEmitter {
       },
     };
 
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchMoved = false;
+
+    model.wrapper.addEventListener(
+      'touchstart',
+      event => {
+        const touch = event.touches[0];
+        if (!touch) return;
+
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+        touchMoved = false;
+      },
+      { passive: true },
+    );
+
+    model.wrapper.addEventListener(
+      'touchmove',
+      event => {
+        const touch = event.touches[0];
+        if (!touch) return;
+
+        const deltaX = Math.abs(touch.clientX - touchStartX);
+        const deltaY = Math.abs(touch.clientY - touchStartY);
+
+        if (deltaX > 8 || deltaY > 8) {
+          touchMoved = true;
+        }
+      },
+      { passive: true },
+    );
+
+    model.wrapper.addEventListener(
+      'touchend',
+      () => {
+        setTimeout(() => {
+          touchMoved = false;
+        }, 50);
+      },
+      { passive: true },
+    );
+
     model.wrapper.addEventListener('click', event => {
-      // event.preventDefault();
+      const polygonElement = delegateHandler('.js-s3d-flat__polygon', event);
+
+      if (polygonElement && touchMoved) {
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
+
       const delegateElements = {
-        polygon: delegateHandler('.js-s3d-flat__polygon', event),
+        polygon: polygonElement,
         floorBtn: delegateHandler('[data-floor_btn]', event),
         floorDirectBtn: delegateHandler('[data-floor_direct-btn]', event),
         toFloorBtn: delegateHandler('#s3d-to-floor', event),
@@ -116,12 +166,11 @@ class FlatView extends EventEmitter {
       this.emit('mouseoverFlatHandler', target);
     });
 
-    model.wrapper.addEventListener('click', (evt) => {
+    model.wrapper.addEventListener('click', evt => {
       const scrollDownButton = evt.target.closest('[href="#toScroll"]');
       if (!scrollDownButton) return;
       evt.preventDefault();
       document.querySelector('[id="toScroll"]').scrollIntoView({ behavior: 'smooth' });
-
     });
 
     document.body.addEventListener('click', event => {
@@ -208,6 +257,7 @@ class FlatView extends EventEmitter {
         el.classList.toggle('active', data.type == el.dataset.value);
       });
     });
+
     model.on('updateFloorProperties', propertiesOfCurrentFloor => {
       const updateFloorProperties = (container, properties, propertyRowFunction) => {
         container.innerHTML = properties
@@ -216,12 +266,14 @@ class FlatView extends EventEmitter {
           )
           .join('');
       };
+
       const flatContainer = document.querySelector(
         '[data-flat-explication-floor-properties-container]',
       );
       const villaContainer = document.querySelector(
         '[data-villa-explication-floor-properties-container]',
       );
+
       flatContainer
         ? updateFloorProperties(flatContainer, propertiesOfCurrentFloor, FlatExplicationPropertyRow)
         : villaContainer
@@ -237,24 +289,29 @@ class FlatView extends EventEmitter {
   setTimer(dateOfFinish) {
     const deadline = new Date(dateOfFinish);
     let timerId = null;
+
     function countdownTimer() {
       const diff = deadline - new Date();
       if (diff <= 0) {
         clearInterval(timerId);
       }
+
       const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
       const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
       const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
       const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
+
       $days.textContent = days < 10 ? '0' + days : days;
       $hours.textContent = hours < 10 ? '0' + hours : hours;
       $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
       $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
     }
+
     const $days = document.querySelector('.timer__days');
     const $hours = document.querySelector('.timer__hours');
     const $minutes = document.querySelector('.timer__minutes');
     const $seconds = document.querySelector('.timer__seconds');
+
     countdownTimer();
     timerId = setInterval(countdownTimer, 1000);
   }
@@ -263,6 +320,7 @@ class FlatView extends EventEmitter {
     this._model.wrapper.innerHTML = content;
     const points = this._model.wrapper.querySelectorAll('[data-peculiarity-content]');
     if (points.length === 0) return;
+
     tippy(points, {
       arrow: false,
       trigger: 'mouseenter click',
@@ -281,9 +339,11 @@ class FlatView extends EventEmitter {
       el.setAttribute('data-value', floor);
       el.innerHTML = floor;
     });
+
     this._model.wrapper.querySelectorAll('[data-floor_direct-btn]').forEach(el => {
       el.classList.toggle('active', floor == el.dataset.floor);
     });
+
     if (this._model.floorListSliderInstance) {
       const nextIndex = this._model.floorListSliderInstance.slides.findIndex(
         slide => slide.dataset.floor == floor,
@@ -296,6 +356,7 @@ class FlatView extends EventEmitter {
     document.querySelectorAll('[data-floor_direction="prev"]').forEach(el => {
       el.disabled = data.prev === null;
     });
+
     document.querySelectorAll('[data-floor_direction="next"]').forEach(el => {
       el.disabled = data.next === null;
     });
@@ -304,6 +365,7 @@ class FlatView extends EventEmitter {
   updateActiveFlatInFloor(id) {
     const currentActiveFlat = document.querySelector('.js-s3d-flat__polygon.polygon__active-flat');
     if (currentActiveFlat) currentActiveFlat.classList.remove('polygon__active-flat');
+
     const nextActiveFlat = document.querySelector(`.js-s3d-flat__polygon[data-id="${id}"]`);
     if (nextActiveFlat) nextActiveFlat.classList.add('polygon__active-flat');
   }
@@ -324,6 +386,7 @@ class FlatView extends EventEmitter {
     const { element, flag } = config;
     const container = document.querySelector(element);
     if (!isObjectLike(container)) return;
+
     const method = flag ? 'add' : 'remove';
     container.classList[method]('show');
   }
@@ -352,6 +415,7 @@ class FlatView extends EventEmitter {
       console.warn(`${wrap}: no such element`);
       return;
     }
+
     document
       .querySelector(wrap)
       .insertAdjacentHTML(
@@ -365,12 +429,14 @@ class FlatView extends EventEmitter {
       console.warn(`${wrap}: no such element`);
       return;
     }
+
     document.querySelector(wrap).innerHTML = '';
   }
 
   setNewImage(imgPath) {
     const imgContainer = document.querySelector('.js-s3d-flat__image');
     const url = `${defaultProjectPath}${imgPath}`;
+
     if (imgContainer) {
       imgContainer.setAttribute('src', url);
       imgContainer.setAttribute('data-mfp-src', url);
