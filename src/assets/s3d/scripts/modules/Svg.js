@@ -149,17 +149,25 @@ class Svg {
     const parser = new DOMParser();
     const $svg = parser.parseFromString(data, 'text/html');
     const $floors = $svg.querySelectorAll('[data-type="floor"]');
+    console.log('$floors', $floors);
     $floors.forEach(floorPolygon => {
       const { build, section, floor } = floorPolygon.dataset;
+      console.log('floorPolygon.dataset', floorPolygon.dataset);
+      console.log('floor, section, build', floor, section, build, this.floorList$.value);
+      const apiSection = build == 2 ? +section + 5 : +section;
+      floorPolygon.dataset.section = apiSection;
       const floorDataOfPolygon =
         this.floorList$.value.find(floorData => {
           return (
-            floorData.floor == floor && floorData.build == build && floorData.section == section
+            floorData.floor == floor && floorData.build == build && floorData.section == apiSection
           );
         }) || {};
       floorPolygon.dataset.flat_ids = floorDataOfPolygon['flatsIds']
         ? floorDataOfPolygon['flatsIds'].join(',')
         : '';
+      if (!floorDataOfPolygon['flatsIds'] || floorDataOfPolygon['flatsIds'].length === 0) {
+        floorPolygon.dataset.floorSold = 'true';
+      }
     });
     return $svg.querySelector('svg').outerHTML;
   }

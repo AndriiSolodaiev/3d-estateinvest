@@ -127,6 +127,7 @@ class InfoBox {
         case 'floor':
           this.state.type = data.type;
           flat = this.getFloor(data);
+          console.log('floor that we tr', flat);
           flat.show_prices = this.infoBoxesConfig.show_prices;
           break;
         case 'infrastructure':

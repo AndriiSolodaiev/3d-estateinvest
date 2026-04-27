@@ -70,6 +70,10 @@ polygon[data-type='flat'] {
 
 polygon[data-type='floor'] {
   fill: var(--color-surface-success-available-transparent-20);
+
+  &[data-floor-sold='true'] {
+    pointer-events: none;
+  }
 }
 
 .hybrid,

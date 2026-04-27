@@ -21,13 +21,7 @@
     "video_keyframes": {
       "1": "/assets/s3d/images/v3_2-1.mp4"
     },
-    "controlPoint": [
-      1,
-      40,
-      80,
-      120,
-      160
-    ],
+    "controlPoint": [1, 40, 80, 120, 160],
     "activeSlide": 1,
     "rotateSpeedDefault": 20,
     "rotateSpeed": [
@@ -55,11 +49,7 @@
           "min": 0,
           "max": 119
         },
-        "controlPoint": [
-          5,
-          45,
-          85
-        ],
+        "controlPoint": [5, 45, 85],
         "activeSlide": 5,
         "rotateSpeedDefault": 20,
         "rotateSpeed": [],
@@ -81,12 +71,7 @@
           "min": 0,
           "max": 160
         },
-        "controlPoint": [
-          5,
-          45,
-          85,
-          125
-        ],
+        "controlPoint": [5, 45, 85, 125],
         "activeSlide": 5,
         "rotateSpeedDefault": 20,
         "rotateSpeed": [],
@@ -108,12 +93,73 @@
           "min": 0,
           "max": 159
         },
-        "controlPoint": [
-          5,
-          45,
-          85,
-          125
-        ],
+        "controlPoint": [5, 45, 85, 125],
+        "activeSlide": 5,
+        "rotateSpeedDefault": 20,
+        "rotateSpeed": [],
+        "mouseSpeed": 0.5,
+        "startDegCompass": 90,
+        "frameWithNorthDirection": 89
+      }
+    },
+    "4": {
+      "outside": {
+        "id": "flyby_4_outside",
+        "generalWrapId": "#js-s3d__wrapper",
+        "imageUrl": "images/flyby/4/",
+        "sd_imageUrl": "images/flyby/4/",
+        "image_format": "jpg",
+        "SLIDER_MOBILE_FINGER_SWIPE": false,
+        "class": "js-s3d__wrapper",
+        "numberSlide": {
+          "min": 0,
+          "max": 120
+        },
+        "controlPoint": [5, 45, 85],
+        "activeSlide": 5,
+        "rotateSpeedDefault": 20,
+        "rotateSpeed": [],
+        "mouseSpeed": 0.5,
+        "startDegCompass": 90,
+        "frameWithNorthDirection": 89
+      }
+    },
+    "5": {
+      "outside": {
+        "id": "flyby_5_outside",
+        "generalWrapId": "#js-s3d__wrapper",
+        "imageUrl": "images/flyby/5/",
+        "sd_imageUrl": "images/flyby/5/",
+        "image_format": "jpg",
+        "SLIDER_MOBILE_FINGER_SWIPE": false,
+        "class": "js-s3d__wrapper",
+        "numberSlide": {
+          "min": 0,
+          "max": 119
+        },
+        "controlPoint": [5, 45, 85],
+        "activeSlide": 5,
+        "rotateSpeedDefault": 20,
+        "rotateSpeed": [],
+        "mouseSpeed": 0.5,
+        "startDegCompass": 90,
+        "frameWithNorthDirection": 89
+      }
+    },
+    "6": {
+      "outside": {
+        "id": "flyby_6_outside",
+        "generalWrapId": "#js-s3d__wrapper",
+        "imageUrl": "images/flyby/6/",
+        "sd_imageUrl": "images/flyby/6/",
+        "image_format": "jpg",
+        "SLIDER_MOBILE_FINGER_SWIPE": false,
+        "class": "js-s3d__wrapper",
+        "numberSlide": {
+          "min": 0,
+          "max": 139
+        },
+        "controlPoint": [5, 45, 95],
         "activeSlide": 5,
         "rotateSpeedDefault": 20,
         "rotateSpeed": [],
@@ -188,9 +234,7 @@
     "faq_questions": [
       {
         "ignore": {
-          "build": [
-            2
-          ]
+          "build": [2]
         },
         "question": {
           "en": "What is the price of the flat?",
@@ -203,9 +247,7 @@
       },
       {
         "ignore": {
-          "build": [
-            1
-          ]
+          "build": [1]
         },
         "question": {
           "en": "What is the price of the flat?",
@@ -367,11 +409,7 @@
     }
   },
   "form": {
-    "prefered_countries": [
-      "md",
-      "ro",
-      "ru"
-    ]
+    "prefered_countries": ["md", "ro", "ru"]
   },
   "flyby_finish_dates": {
     "1-outside": "IV 2028",
@@ -379,18 +417,12 @@
     "3-outside": "IV 2028"
   },
   "assotiated_flat_builds_with_flybys": {
-    "1-outside": [
-      "1"
-    ],
-    "2-outside": [
-      "2",
-      "3",
-      "4"
-    ],
-    "3-outside": [
-      "5",
-      "6"
-    ]
+    "1-outside": ["1"],
+    "2-outside": ["2", "3", "4"],
+    "3-outside": ["5"],
+    "4-outside": ["6"],
+    "5-outside": ["7"],
+    "6-outside": ["8", "9"]
   },
   "project_google_map_location": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6248.966795389517!2d28.8896624!3d47.0685305!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDfCsDA0JzA4LjIiTiAyOMKwNTMnMjcuMSJF!5e1!3m2!1sen!2sua!4v1761219634730!5m2!1sen!2sua",
   "infoBoxes": {
