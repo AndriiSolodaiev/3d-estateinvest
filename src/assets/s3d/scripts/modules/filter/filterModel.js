@@ -100,7 +100,10 @@ class FilterModel extends EventEmitter {
   }
 
   init() {
-    this.configProject = this.createFilterParam(this.flats);
+    const saleFlats = Object.fromEntries(
+      Object.entries(this.flats).filter(([, flat]) => flat.sale == 1),
+    );
+    this.configProject = this.createFilterParam(saleFlats);
     this.reduceFilter = this.reduceFilter.bind(this);
     // this.emit('setAmountAllFlat', size(this.flats));
     this.emit('setAmountAllFlat', size(this.availableFlatList));
